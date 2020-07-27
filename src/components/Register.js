@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import RegisterForm from './RegisterForm';
 
 const StyledWrapper = styled.div`
+  margin-top: 10rem;
   border: 1px solid red;
   min-height: 70vh;
   width: 60vw;
@@ -20,9 +21,9 @@ const StyledContainer = styled.div`
 const StyledH1 = styled.h1`
   transform: rotateZ(-90deg);
   position: absolute;
-  top: 32%;
-  left: -93%;
-  font-size: 9rem;
+  top: 38%;
+  left: -78%;
+  font-size: 6rem;
 `;
 
 
@@ -30,7 +31,7 @@ const Register = () => {
   return (
     <StyledWrapper>
       <StyledContainer>
-        <StyledH1>registration</StyledH1>
+        <StyledH1>registration_form</StyledH1>
       </StyledContainer>
       <RegisterForm />
     </StyledWrapper>

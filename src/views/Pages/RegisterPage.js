@@ -12,7 +12,6 @@ const StyledWrapper = styled.div`
 const RegisterPage = () => {
   return (
     <StyledWrapper>
-      <h1>registration_form</h1>
       <Register />
     </StyledWrapper>
   )

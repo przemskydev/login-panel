@@ -46,7 +46,13 @@ const StyledButton = styled.button`
   width: 220px;
   height: 47px;
   border: 1px solid red;
+  border-bottom: 5px solid red;
   background-color: transparent;
+  transition: transform
+
+  ::hover {
+
+  }
 `;
 
 
