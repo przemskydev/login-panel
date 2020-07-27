@@ -12,15 +12,26 @@ const StyledWrapper = styled.div`
 const StyledContainer = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
-  border-right: 1px solid yellow;
+  border-right: 1px solid red;
+  position: relative;
 `;
+
+const StyledH1 = styled.h1`
+  transform: rotateZ(-90deg);
+  position: absolute;
+  top: 32%;
+  left: -93%;
+  font-size: 9rem;
+`;
+
 
 const Register = () => {
   return (
     <StyledWrapper>
       <StyledContainer>
-        Hey
+        <StyledH1>registration</StyledH1>
       </StyledContainer>
+      <h1>form</h1>
     </StyledWrapper>
   )
 }
