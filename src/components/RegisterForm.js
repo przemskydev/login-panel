@@ -8,16 +8,18 @@ const StyledWrapper = styled.div`
   padding: 100px 90px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const StyledInput = styled.input`
   margin-top: 30px;
-  width: auto;
+  width: 100%;
   height: 40px;
   background-color: transparent;
   border: none;
@@ -31,6 +33,20 @@ const StyledInput = styled.input`
     font-size: 1rem;
     color: red;
   }
+`;
+
+const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  text-decoration: none;
+  padding: 0;
+  margin-top: 50px;
+  width: 220px;
+  height: 47px;
+  border: 1px solid red;
+  background-color: transparent;
 `;
 
 
@@ -102,9 +118,9 @@ const RegisterForm = () => (
              placeholder="phone_number"
            />
 
-           <button type="submit" disabled={isSubmitting}>
+           <StyledButton type="submit" disabled={isSubmitting}>
              Submit
-           </button>
+           </StyledButton>
          </StyledForm>
        )}
      </Formik>
