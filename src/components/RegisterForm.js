@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik';
+import Button from '../components/Elements/Button/Button';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -33,49 +34,11 @@ const StyledInput = styled.input`
     font-size: 1rem;
     color: red;
   }
-`;
-
-const StyledButton = styled.button`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: red;
-  text-decoration: none;
-  padding: 0;
-  margin-top: 50px;
-  width: 220px;
-  height: 47px;
-  border: 1px solid red;
-  border-bottom: 5px solid red;
-  background-color: transparent;
-  transition: 
-    color .8s ease-in-out, 
-    letter-spacing 1s ease-in-out, 
-    font-size .8s ease-in-out;
-  overflow: hidden;
-
-  ::after {
-    content: '';
-    position: absolute;
-    width: 220px;
-    height: 43px;
-    background-color: red;
-    z-index: -1;
-    top: 0;
-    right: -101%;
-    transition: transform .5s ease-in-out;
-    will-change: transform;
-  }
-
-  :hover::after {
-    transform: translatex(-100%);
-  }
-
-  :hover {
-    color: black;
-    letter-spacing: 4px;
-    font-size: 1.8rem;
+  /* hide number input arrows */
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
   }
 `;
 
@@ -170,11 +133,9 @@ const RegisterForm = () => (
               {`I agree to the Terms, Privacy Policy and Fees`}
             </label>
 
-
-
-            <StyledButton type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting}>
               Submit
-           </StyledButton>
+           </Button>
           </StyledForm>
         )}
     </Formik>
