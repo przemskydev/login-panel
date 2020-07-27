@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -87,8 +87,11 @@ const RegisterForm = () => (
         firstName: '',
         lastName: '',
         email: '',
-        password: '',
         phone: '',
+        password: '',
+        confirmPassword: '',
+        toggle: false,
+        checked: false,
       }}
       onSubmit={
         (values) => {
@@ -140,6 +143,15 @@ const RegisterForm = () => (
             />
 
             <StyledInput
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.confirmPassword}
+              placeholder="confirm password"
+            />
+
+            <StyledInput
               type="number"
               name="phone"
               onChange={handleChange}
@@ -147,6 +159,18 @@ const RegisterForm = () => (
               value={values.phone}
               placeholder="phone_number"
             />
+
+            <label>
+              <Field type="checkbox" name="checked" />
+              {`Yes, I want to receive emails`}
+            </label>
+
+            <label>
+              <Field type="checkbox" name="toggle" />
+              {`I agree to the Terms, Privacy Policy and Fees`}
+            </label>
+
+
 
             <StyledButton type="submit" disabled={isSubmitting}>
               Submit
