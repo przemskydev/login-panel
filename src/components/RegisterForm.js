@@ -36,6 +36,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,89 +49,112 @@ const StyledButton = styled.button`
   border: 1px solid red;
   border-bottom: 5px solid red;
   background-color: transparent;
-  transition: transform
+  transition: 
+    color .8s ease-in-out, 
+    letter-spacing 1s ease-in-out, 
+    font-size .8s ease-in-out;
+  overflow: hidden;
 
-  ::hover {
+  ::after {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 43px;
+    background-color: red;
+    z-index: -1;
+    top: 0;
+    right: -101%;
+    transition: transform .5s ease-in-out;
+    will-change: transform;
+  }
 
+  :hover::after {
+    transform: translatex(-100%);
+  }
+
+  :hover {
+    color: black;
+    letter-spacing: 4px;
+    font-size: 1.8rem;
   }
 `;
 
 
 const RegisterForm = () => (
   <StyledWrapper>
-     <Formik
-       initialValues={{ 
-         firstName: '',
-         lastName: '',
-         email: '', 
-         password: '',
-         phone: '',
-        }}
-       onSubmit={
-         (values) => {
-           console.log(values)
-         }
-       }
-     >
-       {({
-         values,
-         handleChange,
-         handleBlur,
-         isSubmitting,
-       }) => (
-         <StyledForm>
-           <StyledInput
-             type="text"
-             name="firstName"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.firstName}
-             placeholder="first_name"
-           />
+    <Formik
+      initialValues={{
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        phone: '',
+      }}
+      onSubmit={
+        (values) => {
+          console.log(values)
+        }
+      }
+    >
+      {({
+        values,
+        handleChange,
+        handleBlur,
+        isSubmitting,
+      }) => (
+          <StyledForm>
+            <StyledInput
+              type="text"
+              name="firstName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.firstName}
+              placeholder="first_name"
+            />
 
-           <StyledInput
-             type="text"
-             name="lastName"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.lastName}
-             placeholder="last_name"
-           />
+            <StyledInput
+              type="text"
+              name="lastName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.lastName}
+              placeholder="last_name"
+            />
 
-           <StyledInput
-             type="email"
-             name="email"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.email}
-             placeholder="email"
-           />
+            <StyledInput
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              placeholder="email"
+            />
 
-           <StyledInput
-             type="password"
-             name="password"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.password}
-             placeholder="password"
-           />
+            <StyledInput
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder="password"
+            />
 
-           <StyledInput
-             type="number"
-             name="phone"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.phone}
-             placeholder="phone_number"
-           />
+            <StyledInput
+              type="number"
+              name="phone"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.phone}
+              placeholder="phone_number"
+            />
 
-           <StyledButton type="submit" disabled={isSubmitting}>
-             Submit
+            <StyledButton type="submit" disabled={isSubmitting}>
+              Submit
            </StyledButton>
-         </StyledForm>
-       )}
-     </Formik>
-   </StyledWrapper>
+          </StyledForm>
+        )}
+    </Formik>
+  </StyledWrapper>
 )
 
 export default RegisterForm;
