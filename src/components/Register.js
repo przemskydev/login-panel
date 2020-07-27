@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import RegisterForm from './RegisterForm';
 
 const StyledWrapper = styled.div`
   border: 1px solid red;
@@ -31,7 +32,7 @@ const Register = () => {
       <StyledContainer>
         <StyledH1>registration</StyledH1>
       </StyledContainer>
-      <h1>form</h1>
+      <RegisterForm />
     </StyledWrapper>
   )
 }
