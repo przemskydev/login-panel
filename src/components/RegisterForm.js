@@ -15,6 +15,25 @@ const StyledForm = styled(Form)`
   flex-direction: column;
 `;
 
+const StyledInput = styled.input`
+  margin-top: 30px;
+  width: auto;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid red;
+  color: red;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  
+  ::placeholder {
+    letter-spacing: 2px;
+    font-size: 1rem;
+    color: red;
+  }
+`;
+
+
 const RegisterForm = () => (
   <StyledWrapper>
      <Formik
@@ -38,7 +57,7 @@ const RegisterForm = () => (
          isSubmitting,
        }) => (
          <StyledForm>
-           <input
+           <StyledInput
              type="text"
              name="firstName"
              onChange={handleChange}
@@ -47,7 +66,7 @@ const RegisterForm = () => (
              placeholder="first_name"
            />
 
-           <input
+           <StyledInput
              type="text"
              name="lastName"
              onChange={handleChange}
@@ -56,7 +75,7 @@ const RegisterForm = () => (
              placeholder="last_name"
            />
 
-           <input
+           <StyledInput
              type="email"
              name="email"
              onChange={handleChange}
@@ -65,7 +84,7 @@ const RegisterForm = () => (
              placeholder="email"
            />
 
-           <input
+           <StyledInput
              type="password"
              name="password"
              onChange={handleChange}
@@ -74,7 +93,7 @@ const RegisterForm = () => (
              placeholder="password"
            />
 
-           <input
+           <StyledInput
              type="number"
              name="phone"
              onChange={handleChange}
