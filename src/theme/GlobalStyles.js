@@ -22,6 +22,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'IBM Plex Mono', monospace;
     background-color: #000;
     color: #FE3C1E;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   button:focus {
