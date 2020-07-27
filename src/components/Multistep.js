@@ -25,14 +25,24 @@ const ControlsButtons = () => {
   return (
     <StyledWrapper>
       <StyledButtons>
-        <Button onClick={() => context.changePage(context.currentPage -1)}>Prev</Button>
+        <Button
+          onClick={() => context.changePage(context.currentPage - 1)}
+          disabled={context.currentPage === 1}
+        >
+          Prev
+        </Button>
         {/* 
                 
         try to make hover effect from left to right 
         on the 'next' button
 
         */}
-        <Button onClick={() => context.changePage(context.currentPage +1)}>Next</Button>
+        <Button
+          onClick={() => context.changePage(context.currentPage + 1)}
+          dir="left"
+        >
+          Next
+        </Button>
       </StyledButtons>
 
       <Button type="submit">
