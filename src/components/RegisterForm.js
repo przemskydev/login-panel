@@ -1,12 +1,21 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik';
 import Button from '../components/Elements/Button/Button';
+import * as MultiStep from '../components/Multistep';
 import styled from 'styled-components';
+
+/*
+*
+*
+*
+*
+*
+*/
 
 const StyledWrapper = styled.div`
   right: 0;
   top: 0;
-  padding: 100px 90px;
+  padding: 50px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,102 +52,118 @@ const StyledInput = styled.input`
 `;
 
 
+/*
+*
+*
+*
+*
+*
+*/
+
 const RegisterForm = () => (
   <StyledWrapper>
-    <Formik
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        password: '',
-        confirmPassword: '',
-        toggle: false,
-        checked: false,
-      }}
-      onSubmit={
-        (values) => {
-          console.log(values)
-        }
-      }
-    >
-      {({
-        values,
-        handleChange,
-        handleBlur,
-        isSubmitting,
-      }) => (
-          <StyledForm>
-            <StyledInput
-              type="text"
-              name="firstName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.firstName}
-              placeholder="first_name"
-            />
+    <MultiStep.Wrapper>
+      <Formik
+        initialValues={{
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          password: '',
+          confirmPassword: '',
+          toggle: false,
+          checked: false,
+        }}
+        // onSubmit={
+        //   (values) => {
+        //     console.log(values)
+        //   }
+        // }
+      >
+        {({
+          values,
+          handleChange,
+          handleBlur,
+        }) => (
+            <StyledForm>
+              <StyledInput
+                type="text"
+                name="firstName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.firstName}
+                placeholder="first_name"
+              />
 
-            <StyledInput
-              type="text"
-              name="lastName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastName}
-              placeholder="last_name"
-            />
+              <StyledInput
+                type="text"
+                name="lastName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
+                placeholder="last_name"
+              />
 
-            <StyledInput
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              placeholder="email"
-            />
+              <StyledInput
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="email"
+              />
 
-            <StyledInput
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              placeholder="password"
-            />
+              <StyledInput
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                placeholder="password"
+              />
 
-            <StyledInput
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.confirmPassword}
-              placeholder="confirm password"
-            />
+              <StyledInput
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+                placeholder="confirm_password"
+              />
 
-            <StyledInput
-              type="number"
-              name="phone"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.phone}
-              placeholder="phone_number"
-            />
+              <StyledInput
+                type="number"
+                name="phone"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.phone}
+                placeholder="phone_number"
+              />
 
-            <label>
-              <Field type="checkbox" name="checked" />
-              {`Yes, I want to receive emails`}
-            </label>
+              <label>
+                <Field type="checkbox" name="checked" />
+                {`Yes, I want to receive emails`}
+              </label>
 
-            <label>
-              <Field type="checkbox" name="toggle" />
-              {`I agree to the Terms, Privacy Policy and Fees`}
-            </label>
+              <label>
+                <Field type="checkbox" name="toggle" />
+                {`I agree to the Terms, Privacy Policy and Fees`}
+              </label>
 
-            <Button type="submit" disabled={isSubmitting}>
-              Submit
-           </Button>
-          </StyledForm>
-        )}
-    </Formik>
+              {/* <StyledButtons>
+                <Button>Prev</Button>
+                <Button>Next</Button>
+              </StyledButtons> */}
+
+              {/* <Button type="submit">
+                Submit
+              </Button> */}
+              <MultiStep.ControlsButtons />
+
+            </StyledForm>
+          )}
+      </Formik>
+    </MultiStep.Wrapper>
   </StyledWrapper>
 )
 
