@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import * as MultiStep from '../components/Multistep';
 import styled from 'styled-components';
@@ -85,7 +85,7 @@ const SingupSchema = Yup.object().shape({
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
     .required('Required'),
   confirmPassword: Yup.string()
-    .test('password-match', 'Password do not match!', function(value){
+    .test('password-match', 'Password do not match!', function (value) {
       const { password } = this.parent;
       return password === value;
     })
@@ -95,6 +95,7 @@ const SingupSchema = Yup.object().shape({
     .required('Required'),
   checked: Yup.boolean()
 })
+
 
 const RegisterForm = () => (
   <StyledWrapper>
