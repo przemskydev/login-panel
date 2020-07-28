@@ -39,7 +39,7 @@ const ControlsButtons = () => {
         */}
         <Button
           onClick={() => context.changePage(context.currentPage + 1)}
-          dir={true}
+          right={true}
         >
           Next
         </Button>
