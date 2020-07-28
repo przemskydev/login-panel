@@ -36,7 +36,7 @@ const StyledInput = styled.input`
   
   ::placeholder {
     letter-spacing: 2px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: red;
   }
   /* hide number input arrows */
@@ -173,6 +173,7 @@ const RegisterForm = () => (
             </StyledForm>
           )}
       </Formik>
+      <MultiStep.ProgressBar/>
     </MultiStep.Wrapper>
   </StyledWrapper>
 )

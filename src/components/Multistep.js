@@ -16,6 +16,11 @@ const StyledButtons = styled.div`
 
 `;
 
+const StyledProgress = styled.p`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const WrapperContext = React.createContext({
   currentPage: 1,
   changePage: () => { },
@@ -73,6 +78,18 @@ const Page = ({ children, pageId }) => {
   )
 }
 
+const ProgressBar = () => {
+  const context = useContext(WrapperContext)
+
+  return (
+    <StyledProgress>
+      {
+        `${context.currentPage}/${context.pageIds.length}`
+      }
+    </StyledProgress>
+  )
+}
+
 const Wrapper = ({ children }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -105,4 +122,4 @@ const Wrapper = ({ children }) => {
   )
 }
 
-export { Page, ControlsButtons, Wrapper }
+export { ProgressBar, Page, ControlsButtons, Wrapper }
