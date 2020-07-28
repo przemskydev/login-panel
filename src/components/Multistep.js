@@ -39,13 +39,13 @@ const ControlsButtons = () => {
         */}
         <Button
           onClick={() => context.changePage(context.currentPage + 1)}
-          right={true}
+          right
         >
           Next
         </Button>
       </StyledButtons>
 
-      <Button type="submit">
+      <Button type="submit" down>
         Submit
       </Button>
     </StyledWrapper>
