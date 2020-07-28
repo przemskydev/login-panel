@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 import * as MultiStep from '../components/Multistep';
 import styled from 'styled-components';
 
@@ -64,6 +65,16 @@ const StyledCheckboxes = styled.div`
 *
 *
 */
+const SingupSchema = Yup.object().shape({
+  firstName: Yup.string().min(2, 'Min 3 char').required('Required'),
+  lastName: Yup.string().min(2, 'Min 3 char').required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  phone: Yup.number().min(6, 'Min 6 digit').required('Required'),
+  password: Yup.string().min(4, 'Min 5 char').max(12, 'Enought!').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit").required('Required'),
+  confirmPassword: Yup.string().min(4, 'Min 5 char').max(12, 'Enought!').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit").required('Required'),
+  toggle: Yup.boolean().oneOf([true], "Must accept terms conditions").required('Required'),
+  checked: Yup.boolean()
+})
 
 const RegisterForm = () => (
   <StyledWrapper>
@@ -79,16 +90,19 @@ const RegisterForm = () => (
           toggle: false,
           checked: false,
         }}
-      onSubmit={
-        (values) => {
-          console.log(values)
+        validationSchema={SingupSchema}
+        onSubmit={
+          (values) => {
+            console.log(values)
+          }
         }
-      }
       >
         {({
           values,
           handleChange,
           handleBlur,
+          errors,
+          touched
         }) => (
             <StyledForm>
 
@@ -101,6 +115,9 @@ const RegisterForm = () => (
                   value={values.firstName}
                   placeholder="first_name"
                 />
+                {errors.firstName && touched.firstName ? (
+                  <div>{errors.firstName}</div>
+                ) : null}
                 <StyledInput
                   type="text"
                   name="lastName"
@@ -109,6 +126,9 @@ const RegisterForm = () => (
                   value={values.lastName}
                   placeholder="last_name"
                 />
+                {errors.lastName && touched.lastName ? (
+                  <div>{errors.lastName}</div>
+                ) : null}
               </MultiStep.Page>
 
               <MultiStep.Page pageId={2}>
@@ -120,6 +140,9 @@ const RegisterForm = () => (
                   value={values.email}
                   placeholder="email"
                 />
+                {errors.email && touched.email ? (
+                  <div>{errors.email}</div>
+                ) : null}
                 <StyledInput
                   type="number"
                   name="phone"
@@ -128,7 +151,9 @@ const RegisterForm = () => (
                   value={values.phone}
                   placeholder="phone_number"
                 />
-
+                {errors.phone && touched.phone ? (
+                  <div>{errors.phone}</div>
+                ) : null}
               </MultiStep.Page>
 
               <MultiStep.Page pageId={3}>
@@ -140,6 +165,9 @@ const RegisterForm = () => (
                   value={values.password}
                   placeholder="password"
                 />
+                {errors.password && touched.password ? (
+                  <div>{errors.password}</div>
+                ) : null}
                 <StyledInput
                   type="password"
                   name="confirmPassword"
@@ -148,6 +176,9 @@ const RegisterForm = () => (
                   value={values.confirmPassword}
                   placeholder="confirm_password"
                 />
+                {errors.confirmPassword && touched.confirmPassword ? (
+                  <div>{errors.confirmPassword}</div>
+                ) : null}
               </MultiStep.Page>
 
               <MultiStep.Page pageId={4}>
@@ -162,6 +193,9 @@ const RegisterForm = () => (
                     <Field type="checkbox" name="toggle" />
                     {`I agree to the Terms, Privacy Policy and Fees`}
                   </label>
+                  {errors.toggle && touched.toggle ? (
+                    <div>{errors.toggle}</div>
+                  ) : null}
                 </StyledCheckboxes>
 
               </MultiStep.Page>
@@ -171,7 +205,7 @@ const RegisterForm = () => (
             </StyledForm>
           )}
       </Formik>
-      <MultiStep.ProgressBar/>
+      <MultiStep.ProgressBar />
     </MultiStep.Wrapper>
   </StyledWrapper>
 )
