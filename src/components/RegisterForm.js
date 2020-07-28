@@ -85,9 +85,10 @@ const SingupSchema = Yup.object().shape({
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
     .required('Required'),
   confirmPassword: Yup.string()
-    .min(4, 'Min 4 char')
-    .max(12, 'Enought!')
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
+    .test('password-match', 'Password do not match!', function(value){
+      const { password } = this.parent;
+      return password === value;
+    })
     .required('Required'),
   toggle: Yup.boolean()
     .oneOf([true], "Must accept terms conditions")
