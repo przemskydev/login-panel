@@ -79,11 +79,11 @@ const RegisterForm = () => (
           toggle: false,
           checked: false,
         }}
-      // onSubmit={
-      //   (values) => {
-      //     console.log(values)
-      //   }
-      // }
+      onSubmit={
+        (values) => {
+          console.log(values)
+        }
+      }
       >
         {({
           values,
@@ -142,14 +142,12 @@ const RegisterForm = () => (
                 />
                 <StyledInput
                   type="password"
-                  name="password"
+                  name="confirmPassword"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.confirmPassword}
                   placeholder="confirm_password"
                 />
-
-
               </MultiStep.Page>
 
               <MultiStep.Page pageId={4}>

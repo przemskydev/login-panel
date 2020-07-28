@@ -35,6 +35,7 @@ const ControlsButtons = () => {
     <StyledWrapper>
       <StyledButtons>
         <Button
+          type='button'
           onClick={() => context.changePage(context.currentPage - 1)}
           disabled={context.currentPage === 1}
         >
@@ -47,6 +48,7 @@ const ControlsButtons = () => {
 
         */}
         <Button
+          type='button'
           onClick={() => context.changePage(context.currentPage + 1)}
           right
           disabled={context.currentPage === context.pageIds.length}
