@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Button from '../components/Elements/Button/Button';
 import styled from 'styled-components';
 
@@ -16,7 +16,9 @@ const StyledButtons = styled.div`
 
 const WrapperContext = React.createContext({
   currentPage: 1,
-  changePage: () => { }
+  changePage: () => { },
+  pageIds: [],
+  changePageId: () => { }
 })
 
 const ControlsButtons = () => {
@@ -40,6 +42,7 @@ const ControlsButtons = () => {
         <Button
           onClick={() => context.changePage(context.currentPage + 1)}
           right
+          disabled={context.currentPage === context.pageIds.length}
         >
           Next
         </Button>
@@ -52,20 +55,43 @@ const ControlsButtons = () => {
   )
 }
 
+const Page = ({ children, pageId }) => {
+  const context = useContext(WrapperContext);
+
+  useEffect(() => {
+    context.changePageId(pageId)
+  })
+
+  return (
+    context.currentPage === pageId ? children : null
+  )
+}
+
 const Wrapper = ({ children }) => {
 
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageIds, setPageId] = useState([])
 
   const changePage = (pageId) => {
-    console.log(pageId)
     setCurrentPage(pageId)
+  }
+
+  const changePageId = (pageId) => {
+
+    if (pageIds.includes(pageId)) {
+      return
+    }
+
+    setPageId([...pageIds, pageId])
   }
 
   return (
     <div>
       <WrapperContext.Provider value={{
         currentPage,
-        changePage
+        changePage,
+        pageIds,
+        changePageId,
       }}>
         {children}
       </WrapperContext.Provider>
@@ -73,4 +99,4 @@ const Wrapper = ({ children }) => {
   )
 }
 
-export { ControlsButtons, Wrapper }
+export { Page, ControlsButtons, Wrapper }

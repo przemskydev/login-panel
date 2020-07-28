@@ -1,16 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik';
-import Button from '../components/Elements/Button/Button';
 import * as MultiStep from '../components/Multistep';
 import styled from 'styled-components';
-
-/*
-*
-*
-*
-*
-*
-*/
 
 const StyledWrapper = styled.div`
   right: 0;
@@ -51,7 +42,6 @@ const StyledInput = styled.input`
   }
 `;
 
-
 /*
 *
 *
@@ -74,11 +64,11 @@ const RegisterForm = () => (
           toggle: false,
           checked: false,
         }}
-        // onSubmit={
-        //   (values) => {
-        //     console.log(values)
-        //   }
-        // }
+      // onSubmit={
+      //   (values) => {
+      //     console.log(values)
+      //   }
+      // }
       >
         {({
           values,
@@ -86,78 +76,79 @@ const RegisterForm = () => (
           handleBlur,
         }) => (
             <StyledForm>
-              <StyledInput
-                type="text"
-                name="firstName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.firstName}
-                placeholder="first_name"
-              />
 
-              <StyledInput
-                type="text"
-                name="lastName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.lastName}
-                placeholder="last_name"
-              />
+              <MultiStep.Page pageId={1}>
+                <StyledInput
+                  type="text"
+                  name="firstName"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.firstName}
+                  placeholder="first_name"
+                />
+                <StyledInput
+                  type="text"
+                  name="lastName"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.lastName}
+                  placeholder="last_name"
+                />
+              </MultiStep.Page>
 
-              <StyledInput
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                placeholder="email"
-              />
+              <MultiStep.Page pageId={2}>
+                <StyledInput
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  placeholder="email"
+                />
+                <StyledInput
+                  type="number"
+                  name="phone"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.phone}
+                  placeholder="phone_number"
+                />
 
-              <StyledInput
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                placeholder="password"
-              />
+              </MultiStep.Page>
 
-              <StyledInput
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmPassword}
-                placeholder="confirm_password"
-              />
+              <MultiStep.Page pageId={3}>
+                <StyledInput
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                  placeholder="password"
+                />
+                <StyledInput
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.confirmPassword}
+                  placeholder="confirm_password"
+                />
 
-              <StyledInput
-                type="number"
-                name="phone"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.phone}
-                placeholder="phone_number"
-              />
 
-              <label>
-                <Field type="checkbox" name="checked" />
-                {`Yes, I want to receive emails`}
-              </label>
+              </MultiStep.Page>
 
-              <label>
-                <Field type="checkbox" name="toggle" />
-                {`I agree to the Terms, Privacy Policy and Fees`}
-              </label>
+              <MultiStep.Page pageId={4}>
+                <label>
+                  <Field type="checkbox" name="checked" />
+                  {`Yes, I want to receive emails`}
+                </label>
 
-              {/* <StyledButtons>
-                <Button>Prev</Button>
-                <Button>Next</Button>
-              </StyledButtons> */}
+                <label>
+                  <Field type="checkbox" name="toggle" />
+                  {`I agree to the Terms, Privacy Policy and Fees`}
+                </label>
+              </MultiStep.Page>
 
-              {/* <Button type="submit">
-                Submit
-              </Button> */}
               <MultiStep.ControlsButtons />
 
             </StyledForm>
