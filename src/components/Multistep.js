@@ -28,9 +28,14 @@ const WrapperContext = React.createContext({
   changePageId: () => { }
 })
 
-const ControlsButtons = () => {
+const ControlsButtons = ({ errors }) => {
   const context = useContext(WrapperContext)
-
+  let errArr = [];
+  for (const key in errors) {
+    if (!errArr.includes(key)) {
+      errArr.push(key)
+    }
+  }
   return (
     <StyledWrapper>
       <StyledButtons>
@@ -58,12 +63,16 @@ const ControlsButtons = () => {
       </StyledButtons>
 
       {
-        context.currentPage === context.pageIds.length ? (
-          <Button type="submit" down>
-            Submit
-          </Button>
-        ) : null
+        (context.currentPage === context.pageIds.length) 
+          ? (
+            <Button type="submit" down disabled={!(errArr.length)}>
+              Submit
+            </Button>
+          )
+          : null
+
       }
+
     </StyledWrapper>
   )
 }

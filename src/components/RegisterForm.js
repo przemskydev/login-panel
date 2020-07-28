@@ -221,7 +221,7 @@ const RegisterForm = () => (
 
               </MultiStep.Page>
 
-              <MultiStep.ControlsButtons />
+              <MultiStep.ControlsButtons errors={errors}/>
 
             </StyledForm>
           )}
