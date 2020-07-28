@@ -42,6 +42,16 @@ const StyledInput = styled.input`
   }
 `;
 
+const StyledCheckboxes = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    height: 40px;
+    margin-top: 30px;
+  }
+`;
+
 /*
 *
 *
@@ -138,15 +148,19 @@ const RegisterForm = () => (
               </MultiStep.Page>
 
               <MultiStep.Page pageId={4}>
-                <label>
-                  <Field type="checkbox" name="checked" />
-                  {`Yes, I want to receive emails`}
-                </label>
 
-                <label>
-                  <Field type="checkbox" name="toggle" />
-                  {`I agree to the Terms, Privacy Policy and Fees`}
-                </label>
+                <StyledCheckboxes>
+                  <label>
+                    <Field type="checkbox" name="checked" />
+                    {`Yes, I want to receive emails`}
+                  </label>
+
+                  <label>
+                    <Field type="checkbox" name="toggle" />
+                    {`I agree to the Terms, Privacy Policy and Fees`}
+                  </label>
+                </StyledCheckboxes>
+
               </MultiStep.Page>
 
               <MultiStep.ControlsButtons />
