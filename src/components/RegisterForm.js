@@ -66,13 +66,32 @@ const StyledCheckboxes = styled.div`
 *
 */
 const SingupSchema = Yup.object().shape({
-  firstName: Yup.string().min(2, 'Min 3 char').required('Required'),
-  lastName: Yup.string().min(2, 'Min 3 char').required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.number().min(6, 'Min 6 digit').required('Required'),
-  password: Yup.string().min(4, 'Min 5 char').max(12, 'Enought!').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit").required('Required'),
-  confirmPassword: Yup.string().min(4, 'Min 5 char').max(12, 'Enought!').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit").required('Required'),
-  toggle: Yup.boolean().oneOf([true], "Must accept terms conditions").required('Required'),
+  firstName: Yup.string()
+    .min(3, "Must be at least 3 charakters")
+    .required('Required'),
+  lastName: Yup.string()
+    .min(3, "Must be at least 3 charakters")
+    .required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  phone: Yup.number()
+    .positive("A phone number can't start with a minus")
+    .integer("A phone number can't include a decimal point")
+    .required('Required'),
+  password: Yup.string()
+    .min(4, 'Min 4 char')
+    .max(12, 'Enought!')
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
+    .required('Required'),
+  confirmPassword: Yup.string()
+    .min(4, 'Min 4 char')
+    .max(12, 'Enought!')
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
+    .required('Required'),
+  toggle: Yup.boolean()
+    .oneOf([true], "Must accept terms conditions")
+    .required('Required'),
   checked: Yup.boolean()
 })
 
