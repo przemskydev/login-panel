@@ -85,6 +85,7 @@ ${({ down }) =>
     down &&
     css`
       color: red;
+      /* top: -97px; */
       
       ::after {
         content: '';

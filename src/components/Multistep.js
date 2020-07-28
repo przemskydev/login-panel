@@ -6,12 +6,14 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 200px;
 `;
 
 const StyledButtons = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
 `;
 
 const WrapperContext = React.createContext({
@@ -48,9 +50,13 @@ const ControlsButtons = () => {
         </Button>
       </StyledButtons>
 
-      <Button type="submit" down>
-        Submit
-      </Button>
+      {
+        context.currentPage === context.pageIds.length ? (
+          <Button type="submit" down>
+            Submit
+          </Button>
+        ) : null
+      }
     </StyledWrapper>
   )
 }
