@@ -1,8 +1,8 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import * as MultiStep from '../components/Multistep';
 import styled from 'styled-components';
+import * as MultiStep from "./Multistep";
 
 const StyledWrapper = styled.div`
   right: 0;
@@ -205,14 +205,14 @@ const RegisterForm = () => (
               <MultiStep.Page pageId={4}>
 
                 <StyledCheckboxes>
-                  <label>
+                  <label htmlFor='checked'>
                     <Field type="checkbox" name="checked" />
-                    {`Yes, I want to receive emails`}
+                    Yes, I want to receive emails
                   </label>
 
-                  <label>
+                  <label htmlFor='toggle'>
                     <Field type="checkbox" name="toggle" />
-                    {`I agree to the Terms, Privacy Policy and Fees`}
+                    I agree to the Terms, Privacy Policy and Fees
                   </label>
                   {errors.toggle && touched.toggle ? (
                     <div>{errors.toggle}</div>
