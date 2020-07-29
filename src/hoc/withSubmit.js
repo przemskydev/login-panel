@@ -3,8 +3,9 @@ import React from 'react'
 const withSubmit = (WrappedComponent) => {
   return class withSubmit extends React.Component {
 
-    handleSubmit = (val) => {
-      console.log(val)
+    handleSubmit = ({firstName, lastName, email, phone, password, terms, mailing}) => {
+
+      console.log(firstName, lastName, email, phone, password, terms, mailing)
     }
 
     render() {

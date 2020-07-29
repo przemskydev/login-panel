@@ -91,10 +91,10 @@ const SingupSchema = Yup.object().shape({
       return password === value;
     })
     .required('Required'),
-  toggle: Yup.boolean()
+  terms: Yup.boolean()
     .oneOf([true], "Must accept terms conditions")
     .required('Required'),
-  checked: Yup.boolean()
+  mailing: Yup.boolean()
 })
 
 const RegisterForm = ({ handleSubmit }) => (
@@ -108,8 +108,8 @@ const RegisterForm = ({ handleSubmit }) => (
           phone: '',
           password: '',
           confirmPassword: '',
-          toggle: false,
-          checked: false,
+          terms: false,
+          mailing: false,
         }}
         validationSchema={SingupSchema}
         onSubmit={async (values, { resetForm }) => {
@@ -205,17 +205,17 @@ const RegisterForm = ({ handleSubmit }) => (
               <MultiStep.Page pageId={4}>
 
                 <StyledCheckboxes>
-                  <label htmlFor='checked'>
-                    <Field type="checkbox" name="checked" />
+                  <label htmlFor='mailing'>
+                    <Field type="checkbox" name="mailing" />
                     Yes, I want to receive emails
                   </label>
 
-                  <label htmlFor='toggle'>
-                    <Field type="checkbox" name="toggle" />
+                  <label htmlFor='terms'>
+                    <Field type="checkbox" name="terms" />
                     I agree to the Terms, Privacy Policy and Fees
                   </label>
-                  {errors.toggle && touched.toggle ? (
-                    <div>{errors.toggle}</div>
+                  {errors.terms && touched.terms ? (
+                    <div>{errors.terms}</div>
                   ) : null}
                 </StyledCheckboxes>
 
