@@ -27,9 +27,11 @@ const WrapperContext = React.createContext({
   changePageId: () => { }
 })
 
-const ControlsButtons = () => {
-  const { changePage, currentPage, pageIds } = useContext(WrapperContext)
 
+const ControlsButtons = ({ errors }) => {
+  const { changePage, currentPage, pageIds } = useContext(WrapperContext)
+  const error = (Object.keys(errors).length === 1) ? 'error' : 'errors'
+  console.log(Object.keys(errors).length)
   return (
     <StyledWrapper>
       <StyledButtons>
@@ -40,7 +42,7 @@ const ControlsButtons = () => {
         >
           Prev
         </Button>
-        
+
         <Button
           type='button'
           onClick={() => changePage(currentPage + 1)}
@@ -54,9 +56,16 @@ const ControlsButtons = () => {
       {
         (currentPage === pageIds.length)
           ? (
-            <Button type="submit" down>
-              Submit
-            </Button>
+            <>
+              <Button type="submit" down>
+                Submit
+              </Button>
+              {
+                (Object.keys(errors).length > 0) ? (
+                  `${Object.keys(errors).length} ${error}. Go back and check the form.`
+                ) : null
+              }
+            </>
           )
           : null
       }
