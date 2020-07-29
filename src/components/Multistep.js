@@ -27,11 +27,10 @@ const WrapperContext = React.createContext({
   changePageId: () => { }
 })
 
-
 const ControlsButtons = ({ errors }) => {
   const { changePage, currentPage, pageIds } = useContext(WrapperContext)
   const error = (Object.keys(errors).length === 1) ? 'error' : 'errors'
-  console.log(Object.keys(errors).length)
+
   return (
     <StyledWrapper>
       <StyledButtons>
