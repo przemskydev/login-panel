@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Button from '../components/Elements/Button/Button';
 import styled from 'styled-components';
+import Button from "./Elements/Button/Button";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -13,7 +13,6 @@ const StyledButtons = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
 `;
 
 const StyledProgress = styled.p`
@@ -28,49 +27,38 @@ const WrapperContext = React.createContext({
   changePageId: () => { }
 })
 
-const ControlsButtons = ({ errors }) => {
-  const context = useContext(WrapperContext)
-  let errArr = [];
-  for (const key in errors) {
-    if (!errArr.includes(key)) {
-      errArr.push(key)
-    }
-  }
+const ControlsButtons = () => {
+  const { changePage, currentPage, pageIds } = useContext(WrapperContext)
+
   return (
     <StyledWrapper>
       <StyledButtons>
         <Button
           type='button'
-          onClick={() => context.changePage(context.currentPage - 1)}
-          disabled={context.currentPage === 1}
+          onClick={() => changePage(currentPage - 1)}
+          disabled={currentPage === 1}
         >
           Prev
         </Button>
-        {/* 
-                
-        try to make hover effect from left to right 
-        on the 'next' button
-
-        */}
+        
         <Button
           type='button'
-          onClick={() => context.changePage(context.currentPage + 1)}
+          onClick={() => changePage(currentPage + 1)}
           right
-          disabled={context.currentPage === context.pageIds.length}
+          disabled={currentPage === pageIds.length}
         >
           Next
         </Button>
       </StyledButtons>
 
       {
-        (context.currentPage === context.pageIds.length) 
+        (currentPage === pageIds.length)
           ? (
-            <Button type="submit" down disabled={!(errArr.length)}>
+            <Button type="submit" down>
               Submit
             </Button>
           )
           : null
-
       }
 
     </StyledWrapper>
@@ -78,24 +66,24 @@ const ControlsButtons = ({ errors }) => {
 }
 
 const Page = ({ children, pageId }) => {
-  const context = useContext(WrapperContext);
+  const { currentPage, changePageId } = useContext(WrapperContext)
 
   useEffect(() => {
-    context.changePageId(pageId)
+    changePageId(pageId)
   })
 
   return (
-    context.currentPage === pageId ? children : null
+    currentPage === pageId ? children : null
   )
 }
 
 const ProgressBar = () => {
-  const context = useContext(WrapperContext)
+  const { currentPage, pageIds } = useContext(WrapperContext)
 
   return (
     <StyledProgress>
       {
-        `${context.currentPage}/${context.pageIds.length}`
+        `${currentPage}/${pageIds.length}`
       }
     </StyledProgress>
   )
