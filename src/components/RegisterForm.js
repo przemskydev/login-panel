@@ -1,8 +1,9 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import * as MultiStep from "./Multistep";
+import withSubmit from '../hoc/withSubmit'
 
 const StyledWrapper = styled.div`
   right: 0;
@@ -96,8 +97,7 @@ const SingupSchema = Yup.object().shape({
   checked: Yup.boolean()
 })
 
-
-const RegisterForm = () => (
+const RegisterForm = ({ handleSubmit }) => (
   <StyledWrapper>
     <MultiStep.Wrapper>
       <Formik
@@ -112,11 +112,11 @@ const RegisterForm = () => (
           checked: false,
         }}
         validationSchema={SingupSchema}
-        onSubmit={
-          (values) => {
-            console.log(values)
-          }
-        }
+        onSubmit={async (values, { resetForm }) => {
+          await handleSubmit(values)
+    
+          resetForm()
+        }}
       >
         {({
           values,
@@ -231,4 +231,4 @@ const RegisterForm = () => (
   </StyledWrapper>
 )
 
-export default RegisterForm;
+export default withSubmit(RegisterForm);
