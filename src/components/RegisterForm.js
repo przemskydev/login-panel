@@ -221,7 +221,7 @@ const RegisterForm = ({ handleSubmit }) => (
 
               </MultiStep.Page>
 
-              <MultiStep.ControlsButtons errors={errors}/>
+              <MultiStep.ControlsButtons errors={errors} touched={touched}/>
 
             </StyledForm>
           )}

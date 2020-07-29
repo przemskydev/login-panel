@@ -27,7 +27,7 @@ const WrapperContext = React.createContext({
   changePageId: () => { }
 })
 
-const ControlsButtons = ({ errors }) => {
+const ControlsButtons = ({ errors, touched }) => {
   const { changePage, currentPage, pageIds } = useContext(WrapperContext)
   const error = (Object.keys(errors).length === 1) ? 'error' : 'errors'
 
@@ -60,7 +60,7 @@ const ControlsButtons = ({ errors }) => {
                 Submit
               </Button>
               {
-                (Object.keys(errors).length > 0) ? (
+                (Object.keys(errors).length > 0) && touched.terms ? (
                   `${Object.keys(errors).length} ${error}. Go back and check the form.`
                 ) : null
               }
