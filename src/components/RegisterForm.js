@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik';
+import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import * as MultiStep from "./Multistep";
@@ -56,6 +57,30 @@ const StyledCheckboxes = styled.div`
   label {
     height: 40px;
     margin-top: 30px;
+  }
+`;
+
+const StyledLinkTo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%,-50%); */
+  
+  a {
+    margin: 10px;
+    text-decoration: none;
+    color: red;
+    font-weight: 700;
+    transition: letter-spacing .8s ease-in-out;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    letter-spacing: 2px;
   }
 `;
 
@@ -135,9 +160,11 @@ const RegisterForm = ({ handleSubmit }) => (
                   value={values.firstName}
                   placeholder="first_name"
                 />
-                {errors.firstName && touched.firstName ? (
-                  <div>{errors.firstName}</div>
-                ) : null}
+                <MultiStep.StyledErrMesssage>
+                  {errors.firstName && touched.firstName ? (
+                    <div>{errors.firstName}</div>
+                  ) : null}
+                </MultiStep.StyledErrMesssage>
                 <StyledInput
                   type="text"
                   name="lastName"
@@ -146,9 +173,11 @@ const RegisterForm = ({ handleSubmit }) => (
                   value={values.lastName}
                   placeholder="last_name"
                 />
-                {errors.lastName && touched.lastName ? (
-                  <div>{errors.lastName}</div>
-                ) : null}
+                <MultiStep.StyledErrMesssage>
+                  {errors.lastName && touched.lastName ? (
+                    <div>{errors.lastName}</div>
+                  ) : null}
+                </MultiStep.StyledErrMesssage>
               </MultiStep.Page>
 
               <MultiStep.Page pageId={2}>
@@ -160,9 +189,11 @@ const RegisterForm = ({ handleSubmit }) => (
                   value={values.email}
                   placeholder="email"
                 />
-                {errors.email && touched.email ? (
-                  <div>{errors.email}</div>
-                ) : null}
+                <MultiStep.StyledErrMesssage>
+                  {errors.email && touched.email ? (
+                    <div>{errors.email}</div>
+                  ) : null}
+                </MultiStep.StyledErrMesssage>
                 <StyledInput
                   type="number"
                   name="phone"
@@ -171,9 +202,11 @@ const RegisterForm = ({ handleSubmit }) => (
                   value={values.phone}
                   placeholder="phone_number"
                 />
-                {errors.phone && touched.phone ? (
-                  <div>{errors.phone}</div>
-                ) : null}
+                <MultiStep.StyledErrMesssage>
+                  {errors.phone && touched.phone ? (
+                    <div>{errors.phone}</div>
+                  ) : null}
+                </MultiStep.StyledErrMesssage>
               </MultiStep.Page>
 
               <MultiStep.Page pageId={3}>
@@ -185,9 +218,11 @@ const RegisterForm = ({ handleSubmit }) => (
                   value={values.password}
                   placeholder="password"
                 />
-                {errors.password && touched.password ? (
-                  <div>{errors.password}</div>
-                ) : null}
+                <MultiStep.StyledErrMesssage>
+                  {errors.password && touched.password ? (
+                    <div>{errors.password}</div>
+                  ) : null}
+                </MultiStep.StyledErrMesssage>
                 <StyledInput
                   type="password"
                   name="confirmPassword"
@@ -196,37 +231,42 @@ const RegisterForm = ({ handleSubmit }) => (
                   value={values.confirmPassword}
                   placeholder="confirm_password"
                 />
-                {errors.confirmPassword && touched.confirmPassword ? (
-                  <div>{errors.confirmPassword}</div>
-                ) : null}
+                <MultiStep.StyledErrMesssage>
+                  {errors.confirmPassword && touched.confirmPassword ? (
+                    <div>{errors.confirmPassword}</div>
+                  ) : null}
+                </MultiStep.StyledErrMesssage>
+
               </MultiStep.Page>
 
               <MultiStep.Page pageId={4}>
-
                 <StyledCheckboxes>
                   <label htmlFor='mailing'>
                     <Field type="checkbox" name="mailing" />
                     Yes, I want to receive emails
                   </label>
-
+                  <MultiStep.StyledErrMesssage/>
                   <label htmlFor='terms'>
                     <Field type="checkbox" name="terms" />
                     I agree to the Terms, Privacy Policy and Fees
                   </label>
-                  {errors.terms && touched.terms ? (
-                    <div>{errors.terms}</div>
-                  ) : null}
+                  <MultiStep.StyledErrMesssage>
+                    {errors.terms && touched.terms ? (
+                      <div>{errors.terms}</div>
+                    ) : null}
+                  </MultiStep.StyledErrMesssage>
                 </StyledCheckboxes>
 
               </MultiStep.Page>
 
-              <MultiStep.ControlsButtons errors={errors} touched={touched}/>
+              <MultiStep.ControlsButtons errors={errors} touched={touched} />
 
             </StyledForm>
           )}
       </Formik>
       <MultiStep.ProgressBar />
     </MultiStep.Wrapper>
+    <StyledLinkTo>Have an account? <NavLink to='/login'>Log in!</NavLink></StyledLinkTo>
   </StyledWrapper>
 )
 

@@ -20,6 +20,10 @@ const StyledProgress = styled.p`
   justify-content: flex-end;
 `;
 
+const StyledErrMesssage = styled.div`
+  height: 10px;
+`;
+
 const WrapperContext = React.createContext({
   currentPage: 1,
   changePage: () => { },
@@ -56,14 +60,19 @@ const ControlsButtons = ({ errors, touched }) => {
         (currentPage === pageIds.length)
           ? (
             <>
-              <Button type="submit" down>
+              <Button
+                type="submit"
+                down='true'
+              >
                 Submit
               </Button>
-              {
-                (Object.keys(errors).length > 0) && touched.terms ? (
-                  `${Object.keys(errors).length} ${error}. Go back and check the form.`
-                ) : null
-              }
+              <StyledErrMesssage>
+                {
+                  (Object.keys(errors).length > 0) && touched.terms ? (
+                    `${Object.keys(errors).length} ${error}. Go back and check the form.`
+                  ) : null
+                }
+              </StyledErrMesssage>
             </>
           )
           : null
@@ -129,4 +138,4 @@ const Wrapper = ({ children }) => {
   )
 }
 
-export { ProgressBar, Page, ControlsButtons, Wrapper }
+export { ProgressBar, Page, ControlsButtons, Wrapper, StyledErrMesssage }
