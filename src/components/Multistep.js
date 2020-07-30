@@ -28,7 +28,7 @@ const WrapperContext = React.createContext({
   currentPage: 1,
   changePage: () => { },
   pageIds: [],
-  changePageId: () => { }
+  changePageId: () => { },
 })
 
 const ControlsButtons = ({ errors, touched }) => {
@@ -82,15 +82,18 @@ const ControlsButtons = ({ errors, touched }) => {
   )
 }
 
+
 const Page = ({ children, pageId }) => {
-  const { currentPage, changePageId } = useContext(WrapperContext)
+  const { currentPage, changePageId } = useContext(WrapperContext);
 
   useEffect(() => {
     changePageId(pageId)
-  })
+  });
 
   return (
-    currentPage === pageId ? children : null
+    currentPage === pageId
+      ? children
+      : null
   )
 }
 
@@ -124,13 +127,14 @@ const Wrapper = ({ children }) => {
     setPageId([...pageIds, pageId])
   }
 
+
   return (
     <div>
       <WrapperContext.Provider value={{
         currentPage,
         changePage,
         pageIds,
-        changePageId,
+        changePageId
       }}>
         {children}
       </WrapperContext.Provider>

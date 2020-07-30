@@ -15,7 +15,7 @@ const withSubmit = (WrappedComponent) => {
         id,
         ...val
       }
-
+      
       addItem(content)
     }
 

@@ -84,13 +84,6 @@ const StyledLinkTo = styled.div`
   }
 `;
 
-/*
-*
-*
-*
-*
-*
-*/
 const SingupSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(3, "Must be at least 3 charakters")
@@ -122,152 +115,155 @@ const SingupSchema = Yup.object().shape({
   mailing: Yup.boolean()
 })
 
-const RegisterForm = ({ handleSubmit }) => (
-  <StyledWrapper>
-    <MultiStep.Wrapper>
-      <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          password: '',
-          confirmPassword: '',
-          terms: false,
-          mailing: false,
-        }}
-        validationSchema={SingupSchema}
-        onSubmit={async (values, { resetForm }) => {
-          await handleSubmit(values)
-          resetForm()
-        }}
-      >
-        {({
-          values,
-          handleChange,
-          handleBlur,
-          errors,
-          touched
-        }) => (
-            <StyledForm>
+const RegisterForm = ({ handleSubmit }) => {
 
-              <MultiStep.Page pageId={1}>
-                <StyledInput
-                  type="text"
-                  name="firstName"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.firstName}
-                  placeholder="first_name"
-                />
-                <MultiStep.StyledErrMesssage>
-                  {errors.firstName && touched.firstName ? (
-                    <div>{errors.firstName}</div>
-                  ) : null}
-                </MultiStep.StyledErrMesssage>
-                <StyledInput
-                  type="text"
-                  name="lastName"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.lastName}
-                  placeholder="last_name"
-                />
-                <MultiStep.StyledErrMesssage>
-                  {errors.lastName && touched.lastName ? (
-                    <div>{errors.lastName}</div>
-                  ) : null}
-                </MultiStep.StyledErrMesssage>
-              </MultiStep.Page>
+  return (
+    <StyledWrapper>
+      <MultiStep.Wrapper>
+        <Formik
+          initialValues={{
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            password: '',
+            confirmPassword: '',
+            terms: false,
+            mailing: false,
+          }}
+          validationSchema={SingupSchema}
+          onSubmit={async (values, { resetForm }) => {
+            await handleSubmit(values)
+            resetForm()
+          }}
+        >
+          {({
+            values,
+            handleChange,
+            handleBlur,
+            errors,
+            touched
+          }) => (
+              <StyledForm>
 
-              <MultiStep.Page pageId={2}>
-                <StyledInput
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  placeholder="email"
-                />
-                <MultiStep.StyledErrMesssage>
-                  {errors.email && touched.email ? (
-                    <div>{errors.email}</div>
-                  ) : null}
-                </MultiStep.StyledErrMesssage>
-                <StyledInput
-                  type="number"
-                  name="phone"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.phone}
-                  placeholder="phone_number"
-                />
-                <MultiStep.StyledErrMesssage>
-                  {errors.phone && touched.phone ? (
-                    <div>{errors.phone}</div>
-                  ) : null}
-                </MultiStep.StyledErrMesssage>
-              </MultiStep.Page>
-
-              <MultiStep.Page pageId={3}>
-                <StyledInput
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  placeholder="password"
-                />
-                <MultiStep.StyledErrMesssage>
-                  {errors.password && touched.password ? (
-                    <div>{errors.password}</div>
-                  ) : null}
-                </MultiStep.StyledErrMesssage>
-                <StyledInput
-                  type="password"
-                  name="confirmPassword"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmPassword}
-                  placeholder="confirm_password"
-                />
-                <MultiStep.StyledErrMesssage>
-                  {errors.confirmPassword && touched.confirmPassword ? (
-                    <div>{errors.confirmPassword}</div>
-                  ) : null}
-                </MultiStep.StyledErrMesssage>
-
-              </MultiStep.Page>
-
-              <MultiStep.Page pageId={4}>
-                <StyledCheckboxes>
-                  <label htmlFor='mailing'>
-                    <Field type="checkbox" name="mailing" />
-                    Yes, I want to receive emails
-                  </label>
-                  <MultiStep.StyledErrMesssage/>
-                  <label htmlFor='terms'>
-                    <Field type="checkbox" name="terms" />
-                    I agree to the Terms, Privacy Policy and Fees
-                  </label>
+                <MultiStep.Page pageId={1}>
+                  <StyledInput
+                    type="text"
+                    name="firstName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.firstName}
+                    placeholder="first_name"
+                  />
                   <MultiStep.StyledErrMesssage>
-                    {errors.terms && touched.terms ? (
-                      <div>{errors.terms}</div>
+                    {errors.firstName && touched.firstName ? (
+                      <div>{errors.firstName}</div>
                     ) : null}
                   </MultiStep.StyledErrMesssage>
-                </StyledCheckboxes>
+                  <StyledInput
+                    type="text"
+                    name="lastName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.lastName}
+                    placeholder="last_name"
+                  />
+                  <MultiStep.StyledErrMesssage>
+                    {errors.lastName && touched.lastName ? (
+                      <div>{errors.lastName}</div>
+                    ) : null}
+                  </MultiStep.StyledErrMesssage>
+                </MultiStep.Page>
 
-              </MultiStep.Page>
+                <MultiStep.Page pageId={2}>
+                  <StyledInput
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    placeholder="email"
+                  />
+                  <MultiStep.StyledErrMesssage>
+                    {errors.email && touched.email ? (
+                      <div>{errors.email}</div>
+                    ) : null}
+                  </MultiStep.StyledErrMesssage>
+                  <StyledInput
+                    type="number"
+                    name="phone"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.phone}
+                    placeholder="phone_number"
+                  />
+                  <MultiStep.StyledErrMesssage>
+                    {errors.phone && touched.phone ? (
+                      <div>{errors.phone}</div>
+                    ) : null}
+                  </MultiStep.StyledErrMesssage>
+                </MultiStep.Page>
 
-              <MultiStep.ControlsButtons errors={errors} touched={touched} />
+                <MultiStep.Page pageId={3}>
+                  <StyledInput
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    placeholder="password"
+                  />
+                  <MultiStep.StyledErrMesssage>
+                    {errors.password && touched.password ? (
+                      <div>{errors.password}</div>
+                    ) : null}
+                  </MultiStep.StyledErrMesssage>
+                  <StyledInput
+                    type="password"
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmPassword}
+                    placeholder="confirm_password"
+                  />
+                  <MultiStep.StyledErrMesssage>
+                    {errors.confirmPassword && touched.confirmPassword ? (
+                      <div>{errors.confirmPassword}</div>
+                    ) : null}
+                  </MultiStep.StyledErrMesssage>
 
-            </StyledForm>
-          )}
-      </Formik>
-      <MultiStep.ProgressBar />
-    </MultiStep.Wrapper>
-    <StyledLinkTo>Have an account? <NavLink to='/login'>Log in!</NavLink></StyledLinkTo>
-  </StyledWrapper>
-)
+                </MultiStep.Page>
+
+                <MultiStep.Page pageId={4}>
+                  <StyledCheckboxes>
+                    <label htmlFor='mailing'>
+                      <Field type="checkbox" name="mailing" />
+                    Yes, I want to receive emails
+                  </label>
+                    <MultiStep.StyledErrMesssage />
+                    <label htmlFor='terms'>
+                      <Field type="checkbox" name="terms" />
+                    I agree to the Terms, Privacy Policy and Fees
+                  </label>
+                    <MultiStep.StyledErrMesssage>
+                      {errors.terms && touched.terms ? (
+                        <div>{errors.terms}</div>
+                      ) : null}
+                    </MultiStep.StyledErrMesssage>
+                  </StyledCheckboxes>
+
+                </MultiStep.Page>
+
+                <MultiStep.ControlsButtons errors={errors} touched={touched} />
+
+              </StyledForm>
+            )}
+        </Formik>
+        <MultiStep.ProgressBar />
+      </MultiStep.Wrapper>
+      <StyledLinkTo>Have an account? <NavLink to='/login'>Log in!</NavLink></StyledLinkTo>
+    </StyledWrapper>
+  )
+}
 
 export default withSubmit(RegisterForm);
