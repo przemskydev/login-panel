@@ -20,10 +20,6 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 `;
 
 const StyledInput = styled.input`
@@ -65,11 +61,7 @@ const StyledLinkTo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* position: absolute;
-  bottom: 0%;
-  left: 50%;
-  transform: translate(-50%,-50%); */
-  
+
   a {
     margin: 10px;
     text-decoration: none;
@@ -256,13 +248,13 @@ const RegisterForm = ({ handleSubmit }) => {
                         <StyledCheckboxes>
                           <label htmlFor='mailing'>
                             <Field type="checkbox" name="mailing" />
-                    Yes, I want to receive emails
-                  </label>
+                              Yes, I want to receive emails
+                            </label>
                           <MultiStep.StyledErrMesssage />
                           <label htmlFor='terms'>
                             <Field type="checkbox" name="terms" />
-                    I agree to the Terms, Privacy Policy and Fees
-                  </label>
+                                I agree to the Terms, Privacy Policy and Fees
+                              </label>
                           <MultiStep.StyledErrMesssage>
                             {errors.terms && touched.terms ? (
                               <div>{errors.terms}</div>
@@ -276,8 +268,11 @@ const RegisterForm = ({ handleSubmit }) => {
 
                     </>
                 }
+
               </StyledForm>
+
             )}
+
         </Formik>
 
         {
@@ -287,8 +282,11 @@ const RegisterForm = ({ handleSubmit }) => {
         }
 
       </MultiStep.Wrapper>
+
       <StyledLinkTo>
-        { !done ? 'Have an account?' : null } <NavLink to='/login'>Log in!</NavLink></StyledLinkTo>
+        {!done ? 'Have an account?' : null} <NavLink to='/login'>Log in!</NavLink>
+      </StyledLinkTo>
+      
     </StyledWrapper >
   )
 }
