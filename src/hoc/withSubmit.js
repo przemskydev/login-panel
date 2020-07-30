@@ -1,23 +1,35 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { addItem as addItemAction } from 'actions';
 
 const withSubmit = (WrappedComponent) => {
-  return class withSubmit extends React.Component {
 
-    handleSubmit = ({firstName, lastName, email, phone, password, terms, mailing}) => {
+  return function Enhancer({ addItem }) {
 
-      console.log(firstName, lastName, email, phone, password, terms, mailing)
+    const handleSubmit = (val) => {
+      addItem(val)
     }
 
-    render() {
-      return (
-        <WrappedComponent
-          handleSubmit={this.handleSubmit}
-          {...this.props}
-        />
-      )
-    }
+    return (
+      <WrappedComponent
+        handleSubmit={handleSubmit}
+        // {...props}
+      />
+    )
 
   }
 }
 
-export default withSubmit;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItem: (itemContent) => dispatch(addItemAction(itemContent)),
+  };
+};
+
+const composeHoc = compose(
+  connect(null, mapDispatchToProps),
+  withSubmit
+)
+
+export default composeHoc;
