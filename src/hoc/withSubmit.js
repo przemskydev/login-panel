@@ -7,7 +7,7 @@ const withSubmit = (WrappedComponent) => {
 
   return function Enhancer({ addItem }) {
 
-    const handleSubmit = (val) => {
+    const handleSubmit = async (val) => {
 
       const id = Date.now();
 
@@ -15,8 +15,12 @@ const withSubmit = (WrappedComponent) => {
         id,
         ...val
       }
-      
-      addItem(content)
+
+      try {
+        await addItem(content)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     return (
