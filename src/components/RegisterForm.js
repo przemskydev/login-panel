@@ -114,7 +114,6 @@ const RegisterForm = ({ handleSubmit }) => (
         validationSchema={SingupSchema}
         onSubmit={async (values, { resetForm }) => {
           await handleSubmit(values)
-    
           resetForm()
         }}
       >

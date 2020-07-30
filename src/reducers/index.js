@@ -1,8 +1,8 @@
-import { StaticRouter } from "react-router-dom";
 
 const initialState = {
   
 }
+
 const reducer = (state = initialState, {payload, type}) => {
   
   if(type === "ADD"){
@@ -11,7 +11,7 @@ const reducer = (state = initialState, {payload, type}) => {
       payload
     }
   }
-  console.log(state)
+  
 }
 
 export default reducer;

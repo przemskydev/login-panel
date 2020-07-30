@@ -8,13 +8,15 @@ const withSubmit = (WrappedComponent) => {
   return function Enhancer({ addItem }) {
 
     const handleSubmit = (val) => {
+      const userID = () => {
+        return Date.now()
+      }
       addItem(val)
     }
 
     return (
       <WrappedComponent
         handleSubmit={handleSubmit}
-        // {...props}
       />
     )
 
