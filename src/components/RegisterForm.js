@@ -1,80 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Formik, Form, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
-import styled from 'styled-components';
 import * as MultiStep from "./Multistep";
+import {
+  StyledWrapper,
+  StyledForm,
+  StyledLinkTo,
+  StyledInput,
+  StyledCheckboxes
+} from '../theme/Styled';
 import withSubmit from '../hoc/withSubmit'
-
-const StyledWrapper = styled.div`
-  right: 0;
-  top: 0;
-  padding: 50px 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-`;
-
-const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StyledInput = styled.input`
-  margin-top: 30px;
-  width: 100%;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid red;
-  color: red;
-  font-size: 2rem;
-  letter-spacing: 2px;
-  
-  ::placeholder {
-    letter-spacing: 2px;
-    font-size: 1.1rem;
-    color: red;
-  }
-  /* hide number input arrows */
-  ::-webkit-inner-spin-button,
-  ::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
-  }
-`;
-
-const StyledCheckboxes = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  label {
-    height: 40px;
-    margin-top: 30px;
-  }
-`;
-
-const StyledLinkTo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    margin: 10px;
-    text-decoration: none;
-    color: red;
-    font-weight: 700;
-    transition: letter-spacing .8s ease-in-out;
-  }
-
-  a:hover {
-    text-decoration: underline;
-    letter-spacing: 2px;
-  }
-`;
 
 const SingupSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -286,7 +222,7 @@ const RegisterForm = ({ handleSubmit }) => {
       <StyledLinkTo>
         {!done ? 'Have an account?' : null} <NavLink to='/login'>Log in!</NavLink>
       </StyledLinkTo>
-      
+
     </StyledWrapper >
   )
 }
