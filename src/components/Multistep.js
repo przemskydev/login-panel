@@ -1,28 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import styled from 'styled-components';
+import {
+  StyledMultistepWrap,
+  StyledButtons,
+  StyledProgress,
+  StyledErrMesssage
+} from '../theme/Styled';
 import Button from "./Elements/Button/Button";
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 200px;
-`;
-
-const StyledButtons = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const StyledProgress = styled.p`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const StyledErrMesssage = styled.div`
-  height: 10px;
-`;
 
 const WrapperContext = React.createContext({
   currentPage: 1,
@@ -36,7 +19,7 @@ const ControlsButtons = ({ errors, touched }) => {
   const error = (Object.keys(errors).length === 1) ? 'error' : 'errors'
 
   return (
-    <StyledWrapper>
+    <StyledMultistepWrap>
       <StyledButtons>
         <Button
           type='button'
@@ -78,7 +61,7 @@ const ControlsButtons = ({ errors, touched }) => {
           : null
       }
 
-    </StyledWrapper>
+    </StyledMultistepWrap>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RegisterForm from './RegisterForm';
+import RegisterForm from '../../components/RegisterForm';
 
 const StyledWrapper = styled.div`
   margin-top: 10rem;

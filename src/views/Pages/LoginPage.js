@@ -1,12 +1,9 @@
 import React from 'react'
-import Login from '../../components/LogIn'
+import Login from '../Templates/LogIn'
 
 const LoginPage = () => {
   return (
-    <div>
-      <h1>Here will be Login Form</h1>
-      <Login />
-    </div>
+    <Login />
   )
 }
 

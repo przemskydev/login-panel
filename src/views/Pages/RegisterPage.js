@@ -1,19 +1,10 @@
 import React from 'react'
-import Register from '../../components/Register'
-import styled from 'styled-components'
+import Register from '../Templates/Register';
 
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
 
 const RegisterPage = () => {
   return (
-    <StyledWrapper>
-      <Register />
-    </StyledWrapper>
+    <Register />
   )
 }
 
