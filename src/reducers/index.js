@@ -1,15 +1,17 @@
 
-const initialState = {
+const reducer = (state = [], action) => {
   
-}
-
-const reducer = (state = initialState, {payload, type}) => {
+  switch (action.type) {
+    
+    case 'ADD':
+      return {
+        ...state,
+        ...action.payload
+      }
   
-  if(type === "ADD"){
-    return {
-      ...state,
-      ...payload
-    }
+  
+    default:
+      return state
   }
   
 }

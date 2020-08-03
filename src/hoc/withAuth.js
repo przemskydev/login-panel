@@ -1,36 +1,30 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-const withAuth = (WrappedComponent) => {
+const withAuth = (WrappedComponent) => ({ users }) => {
 
-  return function Enhancer({ login }) {
+  const handleLogin = async (val) => {
 
-    const handleLogin = async (val) => {
+    // const { email, password } = users
 
-      // const id = Date.now();
+    // console.log(email, password)
 
-      // const content = {
-      //   id,
-      //   ...val
-      // }
-
-      // try {
-      //   await addItem(content)
-      // } catch (error) {
-      //   console.log(error)
-      // }
-      console.log(val)
-    }
-
-    return (
-      <WrappedComponent
-        handleLogin={handleLogin}
-      />
-    )
-
+    // console.log('values', val)
+    console.log(users)
   }
+
+  return (
+    <WrappedComponent
+      handleLogin={handleLogin}
+    />
+  )
+
 }
+
+const mapStateToProps = state => ({
+  users: { ...state }
+})
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
@@ -38,10 +32,10 @@ const withAuth = (WrappedComponent) => {
 //   };
 // };
 
-// const composeHoc = compose(
-//   connect(null, mapDispatchToProps),
-//   withSubmit
-// )
+const composeHoc = compose(
+  connect(mapStateToProps, null),
+  withAuth
+);
 
-// export default composeHoc;
-export default withAuth;
+export default composeHoc;
+// export default withAuth
