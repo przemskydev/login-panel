@@ -1,13 +1,13 @@
 import React from 'react'
-import Register from '../Templates/Register';
+import GridTemplate from '../Templates/GridTemplate';
 import RegisterForm from '../../components/RegisterForm';
 
 
 const RegisterPage = () => {
   return (
-    <Register title="rgistration_form">
+    <GridTemplate title="rgistration_form">
       <RegisterForm/>
-    </Register>
+    </GridTemplate>
   )
 }
 

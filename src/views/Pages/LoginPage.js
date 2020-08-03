@@ -1,9 +1,12 @@
-import React from 'react'
-import Login from '../Templates/LogIn'
+import React from 'react';
+import GridTemplate from '../Templates/GridTemplate';
+import LoginForm from '../../components/LoginForm';
 
 const LoginPage = () => {
   return (
-    <Login />
+    <GridTemplate title="login_here">
+      <LoginForm />
+    </GridTemplate>
   )
 }
 
