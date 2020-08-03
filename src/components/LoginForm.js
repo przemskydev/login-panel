@@ -1,15 +1,15 @@
 import React from 'react'
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import {
   StyledWrapper,
   StyledForm,
-  StyledLinkTo,
-  StyledInput,
-  StyledCheckboxes
+  StyledInput
 } from '../theme/Styled';
+import Button from '../components/Elements/Button/Button';
+import withAuth from '../hoc/withAuth';
 
 
-const LoginForm = () => {
+const LoginForm = ({ handleLogin }) => {
   return (
     <StyledWrapper>
       <Formik
@@ -19,7 +19,7 @@ const LoginForm = () => {
         }}
         // validationSchema={SingupSchema}
         onSubmit={(values) =>
-          console.log(values)
+          handleLogin(values)
           // async (values, { resetForm }) => {
           //   if (!didCancel) {
           //     await handleSubmit(values)
@@ -56,6 +56,12 @@ const LoginForm = () => {
                 placeholder="password"
               />
 
+              <Button
+                type='submit'
+              >
+                Login
+              </Button>
+
             </StyledForm>
 
           )}
@@ -64,4 +70,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm;
+export default withAuth(LoginForm);
