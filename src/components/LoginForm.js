@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Formik } from 'formik';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { auth as authAction } from 'actions';
 import * as Yup from 'yup';
 import {
   StyledWrapper,
@@ -9,7 +12,7 @@ import {
   StyledInput,
   StyledLinkTo
 } from '../theme/Styled';
-import Button from '../components/Elements/Button/Button';
+import Button from "./Elements/Button/Button";
 // import withAuth from '../hoc/withAuth';
 
 const SingupSchema = Yup.object().shape({
@@ -22,20 +25,23 @@ const SingupSchema = Yup.object().shape({
 })
 
 
-const LoginForm = () => {
+const LoginForm = ({ auth }) => {
 
-  const [logged, setLogged] = useState(false);
-  const { email, password } = useSelector(state => state);
+  const [notLogged, setLogged] = useState(true);
+  const { email, password, logged } = useSelector(state => state.users);
+  
+  const handleSubmit = (v) => {
+    
+    if(email === v.email && password === v.password){
+      auth(v.email,v.password)
+    } 
 
-  const handleSubmit = (val) => {
-
-    if (val.email === email && val.password === password) {
-      setLogged(true)
-    }
-    console.log('Logged !')
+    setLogged(false)
   }
+  
   return (
     <StyledWrapper>
+      { !notLogged && <h4>wrong_data: try_again</h4>}
       <Formik
         initialValues={{
           email: '',
@@ -44,6 +50,7 @@ const LoginForm = () => {
         validationSchema={SingupSchema}
         onSubmit={
           async (values, { resetForm }) => {
+            // await handleSubmit(values)
             await handleSubmit(values)
             resetForm();
           }
@@ -87,10 +94,17 @@ const LoginForm = () => {
           )}
       </Formik>
       <StyledLinkTo>
-        Dont't have an account?<NavLink to='/register'>Create one!</NavLink>
+        do not have an account?<NavLink to='/register'>create_one</NavLink>
       </StyledLinkTo>
     </StyledWrapper>
   )
 }
 
-export default LoginForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    auth: (email, password) => dispatch(authAction(email, password)),
+  };
+};
+
+
+export default connect(null, mapDispatchToProps)(LoginForm);
