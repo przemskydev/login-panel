@@ -5,7 +5,9 @@ const GridTemplate = ({ title, children }) => {
   return (
     <StyledMainWrapp>
       <StyledContainer>
-        <StyledH1>{title}</StyledH1>
+        <StyledH1>
+          <h1>{title}</h1>
+        </StyledH1>
       </StyledContainer>
       {children}
     </StyledMainWrapp>

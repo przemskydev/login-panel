@@ -54,9 +54,12 @@ const StyledCheckboxes = styled.div`
 const StyledLinkTo = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   a {
     margin: 10px;
     text-decoration: none;
@@ -109,12 +112,18 @@ const StyledContainer = styled.div`
   position: relative;
 `;
 
-const StyledH1 = styled.h1`
-  transform: rotateZ(-90deg);
-  position: absolute;
-  top: 38%;
-  left: -78%;
-  font-size: 6rem;
+const StyledH1 = styled.div`
+  transform: rotate(-90deg);
+  position: relative;
+  top: 80%;
+  left: 10%;
+  
+  h1 {
+    position: absolute;
+    font-size: 6rem;
+    margin: 0;
+    
+  }
 `;
 
 
