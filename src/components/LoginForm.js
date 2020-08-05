@@ -27,7 +27,7 @@ const SingupSchema = Yup.object().shape({
 
 const LoginForm = ({ auth }) => {
 
-  const [notLogged, setLogged] = useState(true);
+  const [notLogged, setNotLogged] = useState(true);
   const { email, password, logged } = useSelector(state => state.users);
 
   const handleSubmit = (v) => {
@@ -36,8 +36,15 @@ const LoginForm = ({ auth }) => {
       auth(v.email, v.password)
     }
 
-    setLogged(false)
+    setNotLogged(false)
   }
+
+
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => input.addEventListener('focus', () => {
+    setNotLogged(true)
+  }))
+
 
   return (
     <StyledWrapper>
