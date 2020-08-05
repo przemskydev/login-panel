@@ -126,6 +126,18 @@ const StyledH1 = styled.div`
   }
 `;
 
+const StyledWrongData = styled.h4`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+  /* width: auto; */
+  padding: 10px;  
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 export {
   StyledWrapper,
@@ -139,5 +151,6 @@ export {
   StyledErrMesssage,
   StyledMainWrapp,
   StyledContainer,
-  StyledH1
+  StyledH1,
+  StyledWrongData
 }

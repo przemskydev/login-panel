@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Formik } from 'formik';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { useSelector, connect } from 'react-redux';
 import { auth as authAction } from 'actions';
 import * as Yup from 'yup';
 import {
   StyledWrapper,
   StyledForm,
   StyledInput,
-  StyledLinkTo
+  StyledLinkTo,
+  StyledWrongData
 } from '../theme/Styled';
+import Warning from '../assets/warn'
 import Button from "./Elements/Button/Button";
 // import withAuth from '../hoc/withAuth';
 
@@ -29,19 +29,24 @@ const LoginForm = ({ auth }) => {
 
   const [notLogged, setLogged] = useState(true);
   const { email, password, logged } = useSelector(state => state.users);
-  
+
   const handleSubmit = (v) => {
-    
-    if(email === v.email && password === v.password){
-      auth(v.email,v.password)
-    } 
+
+    if (email === v.email && password === v.password) {
+      auth(v.email, v.password)
+    }
 
     setLogged(false)
   }
-  
+
   return (
     <StyledWrapper>
-      { !notLogged && <h4>wrong_data: try_again</h4>}
+      {!notLogged &&
+        <StyledWrongData>
+          <Warning />
+          wrong_data: try_again
+        </StyledWrongData>
+      }
       <Formik
         initialValues={{
           email: '',
@@ -96,7 +101,7 @@ const LoginForm = ({ auth }) => {
       <StyledLinkTo>
         do not have an account?<NavLink to='/register'>create_one</NavLink>
       </StyledLinkTo>
-    </StyledWrapper>
+    </StyledWrapper >
   )
 }
 
