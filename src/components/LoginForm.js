@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Formik } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, connect } from 'react-redux';
-import { history } from '../history/index';
 import { auth as authAction } from 'actions';
 import * as Yup from 'yup';
 import {
@@ -14,7 +13,6 @@ import {
 } from '../theme/Styled';
 import Warning from '../assets/warn'
 import Button from "./Elements/Button/Button";
-// import withAuth from '../hoc/withAuth';
 
 const SingupSchema = Yup.object().shape({
   email: Yup.string()
@@ -25,45 +23,60 @@ const SingupSchema = Yup.object().shape({
     .required('Required')
 })
 
+const LoginForm = ({ auth,  logged }) => {
 
-const LoginForm = ({ auth }) => {
-
-  const [notLogged, setNotLogged] = useState(true);
+  const [didCancel, setCancel] = useState(false);
+  const history = useHistory();
+  const [notLogged, setNotLogged] = useState(null);
   const { email, password } = useSelector(state => state.users);
-  const { logged } = useSelector(state => state)
 
-  const handleSubmit = (v) => {
+  useEffect(() => {
+
+    if (didCancel) {
+      history.push('/')
+    }
+
+    return () => {}
+
+  }, [didCancel, history])
+
+  const handleSubmit = (v, callbackFn) => {
 
     if (email === v.email && password === v.password) {
       auth(v.email, v.password)
 
       if (typeof window !== 'undefined') {
         localStorage.setItem('user', JSON.stringify({ e: email, p: password }))
-      } 
-      history.push('/');
+      }
+
       setNotLogged(true)
+      console.log('notlogged still true')
     } else {
+      console.log('notlogged false')
       setNotLogged(false)
     }
 
+    callbackFn()
   }
 
+  const handleRedirect = () => {
+    setCancel(true)
+  }
 
   const inputs = document.querySelectorAll('input');
   inputs.forEach(input => input.addEventListener('focus', () => {
     setNotLogged(true)
   }))
-
-
+  // console.log(!notLogged, !logged)
   return (
     <StyledWrapper>
-      {
+      {/* {
         !notLogged && !logged ? (
           <StyledWrongData>
             <Warning />
             <h4>wrong_data: try_again</h4>
           </StyledWrongData>) : null
-      }
+      } */}
       <Formik
         initialValues={{
           email: '',
@@ -71,14 +84,12 @@ const LoginForm = ({ auth }) => {
         }}
         validationSchema={SingupSchema}
         onSubmit={
-          async (values, { resetForm }) => {
-            // await handleSubmit(values)
-            await handleSubmit(values)
+          (values, { resetForm }) => {
+            handleSubmit(values, handleRedirect)
             resetForm();
           }
         }
       >
-
         {({
           values,
           handleChange,
@@ -128,5 +139,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+const mapStateToProps = ({ logged }) => ({ logged })
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

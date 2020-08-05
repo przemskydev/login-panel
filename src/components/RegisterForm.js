@@ -14,22 +14,22 @@ import withSubmit from '../hoc/withSubmit'
 
 const SingupSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(3, "Must be at least 3 charakters")
-    .required('Required'),
+    .min(3, "Must be at least 3 charakters"),
+    // .required('Required'),
   lastName: Yup.string()
-    .min(3, "Must be at least 3 charakters")
-    .required('Required'),
+    .min(3, "Must be at least 3 charakters"),
+    // .required('Required'),
   email: Yup.string()
     .email('Invalid email')
     .required('Required'),
   phone: Yup.number()
     .positive("A phone number can't start with a minus")
-    .integer("A phone number can't include a decimal point")
-    .required('Required'),
+    .integer("A phone number can't include a decimal point"),
+    // .required('Required'),
   password: Yup.string()
     .min(4, 'Min 4 char')
     .max(12, 'Enought!')
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
+    // .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,12}$/, "4-12 char, one upper case letter, one lower case letter, one numeric digit")
     .required('Required'),
   confirmPassword: Yup.string()
     .test('password-match', 'Password do not match!', function (value) {
@@ -38,8 +38,8 @@ const SingupSchema = Yup.object().shape({
     })
     .required('Required'),
   terms: Yup.boolean()
-    .oneOf([true], "Must accept terms conditions")
-    .required('Required'),
+    .oneOf([true], "Must accept terms conditions"),
+    // .required('Required'),
   mailing: Yup.boolean()
 })
 
