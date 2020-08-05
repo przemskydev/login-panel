@@ -44,7 +44,7 @@ const LoginForm = ({ auth }) => {
       {!notLogged &&
         <StyledWrongData>
           <Warning />
-          wrong_data: try_again
+          <h4>wrong_data: try_again</h4>
         </StyledWrongData>
       }
       <Formik

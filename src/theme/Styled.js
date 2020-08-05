@@ -126,17 +126,20 @@ const StyledH1 = styled.div`
   }
 `;
 
-const StyledWrongData = styled.h4`
+const StyledWrongData = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid red;
-  /* width: auto; */
   padding: 10px;  
   position: absolute;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  h4 {
+    margin: 10px 0 0 0;
+  }
 `;
 
 export {
