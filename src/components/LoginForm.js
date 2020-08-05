@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Formik } from 'formik';
 import { NavLink } from 'react-router-dom';
 import { useSelector, connect } from 'react-redux';
+import { history } from '../history/index';
 import { auth as authAction } from 'actions';
 import * as Yup from 'yup';
 import {
@@ -28,15 +29,23 @@ const SingupSchema = Yup.object().shape({
 const LoginForm = ({ auth }) => {
 
   const [notLogged, setNotLogged] = useState(true);
-  const { email, password, logged } = useSelector(state => state.users);
+  const { email, password } = useSelector(state => state.users);
+  const { logged } = useSelector(state => state)
 
   const handleSubmit = (v) => {
 
     if (email === v.email && password === v.password) {
       auth(v.email, v.password)
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('user', JSON.stringify({ e: email, p: password }))
+      } 
+      history.push('/');
+      setNotLogged(true)
+    } else {
+      setNotLogged(false)
     }
 
-    setNotLogged(false)
   }
 
 
@@ -48,11 +57,12 @@ const LoginForm = ({ auth }) => {
 
   return (
     <StyledWrapper>
-      {!notLogged &&
-        <StyledWrongData>
-          <Warning />
-          <h4>wrong_data: try_again</h4>
-        </StyledWrongData>
+      {
+        !notLogged && !logged ? (
+          <StyledWrongData>
+            <Warning />
+            <h4>wrong_data: try_again</h4>
+          </StyledWrongData>) : null
       }
       <Formik
         initialValues={{

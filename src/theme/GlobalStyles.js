@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     font-family: 'IBM Plex Mono', monospace;
     background-color: #000;
-    color: #FE3C1E;
+    color: #FF0000;
 
     display: flex;
     justify-content: center;

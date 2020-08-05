@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div` 
+  overflow: hidden;
   right: 0;
   top: 0;
   padding: 50px 50px;
@@ -99,7 +100,7 @@ const StyledErrMesssage = styled.div`
 const StyledMainWrapp = styled.div`
   margin-top: 10rem;
   border: 1px solid red;
-  min-height: 70vh;
+  height: 80vh;
   width: 60vw;
   display: grid;
   grid-template-columns: 200px auto;
@@ -115,12 +116,12 @@ const StyledContainer = styled.div`
 const StyledH1 = styled.div`
   transform: rotate(-90deg);
   position: relative;
-  top: 80%;
+  top: 75%;
   left: 10%;
   
   h1 {
     position: absolute;
-    font-size: 6rem;
+    font-size: 3em;
     margin: 0;
     
   }
