@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { addItem as addItemAction } from 'actions';
 
 const withSubmit = (WrappedComponent) => {
-
   return function Enhancer({ addItem }) {
-
     const handleSubmit = async (val) => {
 
       const id = Date.now();
@@ -23,14 +22,16 @@ const withSubmit = (WrappedComponent) => {
       }
     }
 
+    Enhancer.propTypes = {
+      addItem: PropTypes.func.isRequired
+    };
+     
     return (
-      <WrappedComponent
-        handleSubmit={handleSubmit}
-      />
+      <WrappedComponent handleSubmit={handleSubmit} />
     )
-
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

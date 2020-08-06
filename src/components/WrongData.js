@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyledWrongData
 } from '../theme/Styled';
@@ -16,6 +17,11 @@ const WrongData = ({ isntLogged, logged}) => {
         </StyledWrongData>) : null
     
   )
+}
+
+WrongData.propTypes = {
+  isntLogged: PropTypes.bool.isRequired,
+  logged: PropTypes.bool.isRequired
 }
 
 export default WrongData;

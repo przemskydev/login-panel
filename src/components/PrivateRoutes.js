@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  // const { logged } = useSelector(state=>state.logged)
   return (
     <Route {...rest} render={props => (
-      localStorage.getItem('user') ? <Component {...props}/> : <Redirect to='/login' />
+      localStorage.getItem('user') ? <Component {...props} /> : <Redirect to='/login' />
     )}
-
     />
   )
+}
+
+PrivateRoute.propTypes = {
+  component: PropTypes.func.isRequired
 }
 
 export default PrivateRoute;

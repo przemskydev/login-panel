@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import {
   StyledMultistepWrap,
   StyledButtons,
@@ -65,7 +66,6 @@ const ControlsButtons = ({ errors, touched }) => {
   )
 }
 
-
 const Page = ({ children, pageId }) => {
   const { currentPage, changePageId } = useContext(WrapperContext);
 
@@ -123,6 +123,15 @@ const Wrapper = ({ children }) => {
       </WrapperContext.Provider>
     </div>
   )
+}
+
+ControlsButtons.propTypes = {
+  errors: PropTypes.objectOf().isRequired,
+  touched: PropTypes.objectOf().isRequired
+}
+
+Wrapper.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export { ProgressBar, Page, ControlsButtons, Wrapper, StyledErrMesssage }
