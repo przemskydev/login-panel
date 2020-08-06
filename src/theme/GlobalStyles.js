@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
   }
 
   button:focus {

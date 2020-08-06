@@ -8,11 +8,10 @@ import {
   StyledWrapper,
   StyledForm,
   StyledInput,
-  StyledLinkTo,
-  StyledWrongData
+  StyledLinkTo
 } from '../theme/Styled';
-import Warning from '../assets/warn'
 import Button from "./Elements/Button/Button";
+import WrongData from "./WrongData"
 
 const SingupSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,22 +22,22 @@ const SingupSchema = Yup.object().shape({
     .required('Required')
 })
 
-const LoginForm = ({ auth,  logged }) => {
+const LoginForm = ({ auth, logged }) => {
 
   const [didCancel, setCancel] = useState(false);
   const history = useHistory();
-  const [notLogged, setNotLogged] = useState(null);
+  const [isntLogged, setLogged] = useState(true);
   const { email, password } = useSelector(state => state.users);
 
   useEffect(() => {
-
     if (didCancel) {
       history.push('/')
     }
-
-    return () => {}
-
   }, [didCancel, history])
+
+  useEffect(() => {
+    return () => { }
+  }, [])
 
   const handleSubmit = (v, callbackFn) => {
 
@@ -49,14 +48,12 @@ const LoginForm = ({ auth,  logged }) => {
         localStorage.setItem('user', JSON.stringify({ e: email, p: password }))
       }
 
-      setNotLogged(true)
-      console.log('notlogged still true')
-    } else {
-      console.log('notlogged false')
-      setNotLogged(false)
-    }
+      setLogged(true)
+      callbackFn()
 
-    callbackFn()
+    } else {
+      setLogged(false)
+    }
   }
 
   const handleRedirect = () => {
@@ -65,18 +62,13 @@ const LoginForm = ({ auth,  logged }) => {
 
   const inputs = document.querySelectorAll('input');
   inputs.forEach(input => input.addEventListener('focus', () => {
-    setNotLogged(true)
+    setLogged(true)
   }))
-  // console.log(!notLogged, !logged)
+
   return (
     <StyledWrapper>
-      {/* {
-        !notLogged && !logged ? (
-          <StyledWrongData>
-            <Warning />
-            <h4>wrong_data: try_again</h4>
-          </StyledWrongData>) : null
-      } */}
+      <WrongData isntLogged={isntLogged} logged={logged} />
+
       <Formik
         initialValues={{
           email: '',
