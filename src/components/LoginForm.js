@@ -4,6 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, connect } from 'react-redux';
 import { auth as authAction } from 'actions';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import {
   StyledWrapper,
   StyledForm,
@@ -11,7 +12,8 @@ import {
   StyledLinkTo
 } from '../theme/Styled';
 import Button from "./Elements/Button/Button";
-import WrongData from "./WrongData"
+import WrongData from "./WrongData";
+
 
 const SingupSchema = Yup.object().shape({
   email: Yup.string()
@@ -60,10 +62,12 @@ const LoginForm = ({ auth, logged }) => {
     setCancel(true)
   }
 
-  const inputs = document.querySelectorAll('input');
-  inputs.forEach(input => input.addEventListener('focus', () => {
-    setLogged(true)
-  }))
+  document.querySelectorAll('input')
+    .forEach(input => input.addEventListener('focus',
+      () => {
+        setLogged(true)
+      })
+    )
 
   return (
     <StyledWrapper>
@@ -123,6 +127,11 @@ const LoginForm = ({ auth, logged }) => {
       </StyledLinkTo>
     </StyledWrapper >
   )
+}
+
+LoginForm.propTypes = {
+  auth: PropTypes.func.isRequired,
+  logged: PropTypes.bool.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {
