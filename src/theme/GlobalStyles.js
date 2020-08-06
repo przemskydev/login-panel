@@ -17,12 +17,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    /* padding-left: 150px; */
     font-size: 1.6rem;
     font-family: 'IBM Plex Mono', monospace;
     background-color: #000;
     color: #FF0000;
-
     display: flex;
     justify-content: center;
     align-items: center;

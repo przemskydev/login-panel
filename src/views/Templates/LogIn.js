@@ -1,7 +1,5 @@
 import React from 'react'
 import { StyledMainWrapp, StyledContainer, StyledH1 } from '../../theme/Styled';
-// import LoginPage from '../Pages/LoginPage'
-
 
 const Login = () => {
   return (

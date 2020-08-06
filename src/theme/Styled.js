@@ -98,7 +98,6 @@ const StyledErrMesssage = styled.div`
 `;
 
 const StyledMainWrapp = styled.div`
-  /* margin-top: 10rem; */
   border: 1px solid red;
   height: 80vh;
   width: 60vw;

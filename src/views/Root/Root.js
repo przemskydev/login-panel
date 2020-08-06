@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import { history } from '../../history/index'
 import { Provider } from 'react-redux';
 import store from 'store';
+import { history } from '../../history/index'
 import Main from "../Templates/Main";
 import { routes } from '../../routes/index';
 import PrivateRoute from '../../components/PrivateRoutes';

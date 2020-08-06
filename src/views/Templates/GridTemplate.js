@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledMainWrapp, StyledContainer, StyledH1 } from '../../theme/Styled';
 
 const GridTemplate = ({ title, children }) => {
@@ -12,6 +13,11 @@ const GridTemplate = ({ title, children }) => {
       {children}
     </StyledMainWrapp>
   )
+}
+
+GridTemplate.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default GridTemplate;
