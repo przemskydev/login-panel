@@ -107,6 +107,50 @@ ${({ down }) =>
   }
 
 
+${({ geo }) =>
+    geo &&
+    css`
+      padding: 0;
+      margin-top: 20px;
+      height: 25px;
+      width: auto;
+      border-bottom: 1px solid red;
+      border-left: 5px solid red;
+      border-right: 5px solid red;
+
+      ::after {
+        content: '';
+        position: absolute;
+        width: calc(100% - 50%);
+        height: 25px;
+        background-color: red;
+        z-index: -1;
+        top: 0%;
+        right: -50%;
+        transition: transform .5s ease-in-out;
+        will-change: transform;
+      }
+
+      ::before {
+        content: '';
+        position: absolute;
+        width: calc(100% - 50%);
+        height: 25px;
+        background-color: red;
+        z-index: -1;
+        top: 0%;
+        left: -50%;
+        transition: transform .5s ease-in-out;
+        will-change: transform;
+      }
+
+      :hover::before {
+        transform: translatex(100%);
+      }
+    `
+  }
+
+
 `;
 
 export default Button;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Form } from 'formik';
 
 const StyledWrapper = styled.div` 
@@ -10,6 +10,17 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   position: relative;
+
+  ${({ smaller }) =>
+    smaller &&
+    css`
+      padding: 20px;
+
+      h1 {
+        margin: 10px;
+      }
+    `
+  }
 `;
 
 const StyledForm = styled(Form)`

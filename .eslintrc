@@ -10,7 +10,8 @@
   "globals": {
     "document": true,
     "window": true,
-    "localStorage": true
+    "localStorage": true,
+    "navigator": true
   },
   "rules": {
     "no-console": "off",

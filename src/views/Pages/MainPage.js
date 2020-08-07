@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import Home from '../Templates/Home';
 import {
   StyledHome
@@ -12,8 +11,6 @@ const StyledHomeHeader = styled.h1`
 
 const MaginPage = () => {
 
-  const { users } = useSelector(state => state);
-  console.log(users)
   return (
     <StyledHome>
       <StyledHomeHeader>Hello there!</StyledHomeHeader>

@@ -29,7 +29,7 @@ const LoginForm = ({ auth, logged }) => {
   const [didCancel, setCancel] = useState(false);
   const history = useHistory();
   const [isntLogged, setLogged] = useState(true);
-  const { email, password } = useSelector(state => state.users);
+  const { email, password, firstName, lastName } = useSelector(state => state.users);
 
   useEffect(() => {
     if (didCancel) {
@@ -47,7 +47,7 @@ const LoginForm = ({ auth, logged }) => {
       auth(v.email, v.password)
 
       if (typeof window !== 'undefined') {
-        localStorage.setItem('user', JSON.stringify({ e: email, p: password }))
+        localStorage.setItem('user', JSON.stringify({ email, password, firstName, lastName }))
       }
 
       setLogged(true)
