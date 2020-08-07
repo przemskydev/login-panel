@@ -55,6 +55,10 @@ const RegisterForm = ({ handleSubmit }) => {
     }
   }, [done])
 
+  useEffect(()=>{
+    return ()=>{}
+  })
+
   return (
     <StyledWrapper>
       <MultiStep.Wrapper>

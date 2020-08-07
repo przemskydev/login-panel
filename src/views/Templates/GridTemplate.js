@@ -17,7 +17,7 @@ const GridTemplate = ({ title, children }) => {
 
 GridTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.object).isRequired
+  children: PropTypes.element.isRequired
 }
 
 export default GridTemplate;

@@ -126,8 +126,8 @@ const Wrapper = ({ children }) => {
 }
 
 ControlsButtons.propTypes = {
-  errors: PropTypes.objectOf().isRequired,
-  touched: PropTypes.objectOf().isRequired
+  errors: PropTypes.objectOf(PropTypes.string).isRequired,
+  touched: PropTypes.objectOf(PropTypes.bool).isRequired
 }
 
 Wrapper.propTypes = {

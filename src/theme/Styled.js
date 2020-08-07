@@ -105,6 +105,12 @@ const StyledMainWrapp = styled.div`
   grid-template-columns: 200px auto;
 `;
 
+const StyledHome = styled.div`
+  border: 1px solid red;
+  height: 80vh;
+  width: 60vw;        
+`;
+
 const StyledContainer = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
@@ -154,6 +160,7 @@ export {
   StyledErrMesssage,
   StyledMainWrapp,
   StyledContainer,
+  StyledHome,
   StyledH1,
   StyledWrongData
 }
