@@ -1,21 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import Button from '../../components/Elements/Button/Button'
+import Button from '../../components/Elements/Button/Button';
+import MyComponent from '../../components/Maps/index'
 import {
   StyledWrapper
 } from '../../theme/Styled';
 
 const Home = () => {
-
-  const { firstName, lastName, phone } = useSelector(state => state.users);
-  console.log(firstName, lastName, phone)
+  const { firstName, lastName } = useSelector(state => state.users);
+  const [crds, setCoords] = useState({})
 
   const findMe = () => {
 
     const succes = ({ coords }) => {
       const { latitude, longitude } = coords;
-
-      console.log(latitude, longitude)
+      setCoords({latitude, longitude})
     }
 
     if (!navigator.geolocation) {
@@ -23,17 +22,16 @@ const Home = () => {
     } else {
       navigator.geolocation.getCurrentPosition(succes)
     }
+
   }
 
-  // const crds = navigator.geolocation.getCurrentPosition(res => { return ( res.coords)})
-  // console.log(crds)
   return (
     <StyledWrapper smaller>
       <h1>first_name: {firstName || 'General'}</h1>
       <h1>last_name: {lastName || 'Kenobi'}</h1>
 
-      {/* <h1>`${latitude} ${longitude}`</h1> */}
       <Button geo type='button' onClick={() => findMe()}>GEO</Button>
+      <MyComponent isMarkedShown coords={crds}/>
     </StyledWrapper>
   )
 }
