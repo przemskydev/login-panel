@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from 'store';
 import Main from "../Templates/Main";
@@ -12,7 +12,7 @@ import RegisterPage from '../Pages/RegisterPage';
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Main>
           <Switch>
             <PrivateRoute exact path={routes.main} component={MainPage} />
@@ -20,7 +20,7 @@ function Root() {
             <Route exact path={routes.register} component={RegisterPage} />
           </Switch>
         </Main>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
