@@ -6,17 +6,20 @@ const containerStyle = {
   marginTop: '12px',
   width: 'auto',
   minHeight: '150px',
+  height: '90%',
 };
 
 
 
-function MyComponent({ latitude = 51.2182404, longitude = 22.4236854 }) {
+function MyComponent({coords}) {
+
+  const { latitude, longitude } = {...coords}
   const [map, setMap] = React.useState(null)
   const center = {
-    lat: latitude,
-    lng: longitude
+    lat: latitude || 52.233,
+    lng: longitude || 20.781
   };
-  console.log(center)
+
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -28,6 +31,7 @@ function MyComponent({ latitude = 51.2182404, longitude = 22.4236854 }) {
     setMap(null)
   }, [])
 
+
   return (
     <LoadScript
       googleMapsApiKey={API_KEY}
@@ -35,7 +39,7 @@ function MyComponent({ latitude = 51.2182404, longitude = 22.4236854 }) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={5}
+        zoom={7}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >

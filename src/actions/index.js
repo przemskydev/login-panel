@@ -10,3 +10,7 @@ export const auth = (email, password) => ({
     password
   }
 });
+
+export const logout = () =>({
+  type: 'LOGOUT'
+})

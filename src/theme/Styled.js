@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
     smaller &&
     css`
       padding: 20px;
-
+      height: 85%;
       h1 {
         margin: 10px;
       }
@@ -117,6 +117,7 @@ const StyledMainWrapp = styled.div`
 `;
 
 const StyledHome = styled.div`
+  position: relative;
   border: 1px solid red;
   height: 80vh;
   width: 60vw;        
@@ -159,6 +160,7 @@ const StyledWrongData = styled.div`
   }
 `;
 
+
 export {
   StyledWrapper,
   StyledForm,
@@ -173,5 +175,5 @@ export {
   StyledContainer,
   StyledHome,
   StyledH1,
-  StyledWrongData
+  StyledWrongData,
 }

@@ -112,7 +112,7 @@ ${({ geo }) =>
     css`
       padding: 0;
       margin-top: 20px;
-      height: 25px;
+      height: 40px;
       width: auto;
       border-bottom: 1px solid red;
       border-left: 5px solid red;
@@ -122,7 +122,7 @@ ${({ geo }) =>
         content: '';
         position: absolute;
         width: calc(100% - 50%);
-        height: 25px;
+        height: 40px;
         background-color: red;
         z-index: -1;
         top: 0%;
@@ -135,7 +135,7 @@ ${({ geo }) =>
         content: '';
         position: absolute;
         width: calc(100% - 50%);
-        height: 25px;
+        height: 40px;
         background-color: red;
         z-index: -1;
         top: 0%;
@@ -146,6 +146,8 @@ ${({ geo }) =>
 
       :hover::before {
         transform: translatex(100%);
+        letter-spacing: 3px;
+        font-size: 1.3rem;
       }
     `
   }

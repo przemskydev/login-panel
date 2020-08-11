@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
     /* happy rems */
     /* 1rem == 10px */
     font-size: 62.5%; 
+    height: 100%;
+}
   }
   
   body {
@@ -33,6 +35,11 @@ const GlobalStyle = createGlobalStyle`
 
   input:focus {
     outline:0;
+  }
+
+  h6 {
+    margin: 0;
+    text-align: center;
   }
 `;
 

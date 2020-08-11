@@ -14,7 +14,7 @@ const Home = () => {
 
     const succes = ({ coords }) => {
       const { latitude, longitude } = coords;
-      setCoords({latitude, longitude})
+      setCoords({ latitude, longitude })
     }
 
     if (!navigator.geolocation) {
@@ -27,11 +27,13 @@ const Home = () => {
 
   return (
     <StyledWrapper smaller>
-      <h1>first_name: {firstName || 'General'}</h1>
-      <h1>last_name: {lastName || 'Kenobi'}</h1>
-
-      <Button geo type='button' onClick={() => findMe()}>GEO</Button>
-      <MyComponent isMarkedShown coords={crds}/>
+      
+        <h1>first_name: {firstName || 'General'}</h1>
+        <h1>last_name: {lastName || 'Kenobi'}</h1>
+        <h6>Let's check your location. Just for fun.</h6>
+     
+      <Button geo type='button' onClick={() => findMe()}>Find me!</Button>
+      <MyComponent isMarkedShown coords={crds} />
     </StyledWrapper>
   )
 }
