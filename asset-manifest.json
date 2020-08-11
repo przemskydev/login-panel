@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/login-panel/static/css/main.69eda509.chunk.css",
+    "main.js": "/login-panel/static/js/main.35ea89b2.chunk.js",
+    "main.js.map": "/login-panel/static/js/main.35ea89b2.chunk.js.map",
+    "runtime-main.js": "/login-panel/static/js/runtime-main.a4340978.js",
+    "runtime-main.js.map": "/login-panel/static/js/runtime-main.a4340978.js.map",
+    "static/js/2.7fcca597.chunk.js": "/login-panel/static/js/2.7fcca597.chunk.js",
+    "static/js/2.7fcca597.chunk.js.map": "/login-panel/static/js/2.7fcca597.chunk.js.map",
+    "index.html": "/login-panel/index.html",
+    "precache-manifest.a7a93ec0188f946288f19592aa2cd1ea.js": "/login-panel/precache-manifest.a7a93ec0188f946288f19592aa2cd1ea.js",
+    "service-worker.js": "/login-panel/service-worker.js",
+    "static/css/main.69eda509.chunk.css.map": "/login-panel/static/css/main.69eda509.chunk.css.map",
+    "static/js/2.7fcca597.chunk.js.LICENSE.txt": "/login-panel/static/js/2.7fcca597.chunk.js.LICENSE.txt",
+    "static/media/exclamation-mark.37366ff7.svg": "/login-panel/static/media/exclamation-mark.37366ff7.svg",
+    "static/media/logout.223b5d1f.svg": "/login-panel/static/media/logout.223b5d1f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4340978.js",
+    "static/js/2.7fcca597.chunk.js",
+    "static/css/main.69eda509.chunk.css",
+    "static/js/main.35ea89b2.chunk.js"
+  ]
+}
