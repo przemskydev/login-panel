@@ -6,27 +6,23 @@ Validation of the registration and login form, showing errors and data requireme
 
 If you want download, clone this repo to your desktop and run `npm install` to install all the dependencies, then `npm start` to run locally.
 
-### About
+## About
+
+I have created it to implement the validation of the registration form, such as the minimum length of names, the correct password style and confirmation, checking accepting the terms of the regulations and others.
+
+To log in, please provide your email and password from registration.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React]
+* [Redux]
+* [Router]
+* [React GoogleMaps]
 
-## Contributing
+## Author
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* **Przemsky** - *Initial work* - [Przemskydev](https://github.com/Przemskydev)
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
