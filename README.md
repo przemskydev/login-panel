@@ -2,6 +2,8 @@
 
 Validation of the registration and login form, showing errors and data requirements.
 
+[DEMO](https://przemskydev.github.io/login-panel/#/login)
+
 ## Getting Started
 
 If you want download, clone this repo to your desktop and run `npm install` to install all the dependencies, then `npm start` to run locally.
@@ -21,15 +23,8 @@ To log in, please provide your email and password from registration.
 
 ## Author
 
-* **Przemsky** - *Initial work* - [Przemskydev](https://github.com/Przemskydev)
-
+* [Przemskydev](https://github.com/Przemskydev)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
